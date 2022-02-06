@@ -1,12 +1,14 @@
 :root {
+  --main-page-padding: 52px 56px;
   --mode-title-height: 80px;
   --mode-title-border-radius: 4px;
-  --mode-title-horizontal-padding: 16px;
-  --mode-title-background-color: white;
+  --mode-title-border-width: 2px;
+  --mode-title-border-color: #363636;
+  --mode-title-horizontal-padding: 24px;
   --mode-title-font-family: 'Franklin Gothic Medium Cond';
   --mode-title-font-size: 44px;
-  --mode-title-font-weight: 'normal';
-  --mode-title-font-color: #393635;
+  --mode-title-font-weight: normal;
+  --mode-title-font-color: #373634;
   --section-header-width: 562px;
   --section-header-height: 40px;
   --section-header-border-radius: 2px;
@@ -14,12 +16,12 @@
   --section-header-background-color: #373634;
   --section-header-font-family: 'Franklin Gothic Medium Cond';
   --section-header-font-size: 20px;
-  --section-header-font-weight: 'bold';
+  --section-header-font-weight: bold;
   --section-header-font-color: #f2f2f2;
   --section-item-vertical-spacing: 32px;
   --section-item-font-family: 'Franklin Gothic Book';
   --section-item-font-size: 14px;
-  --section-item-font-weight: 'normal';
+  --section-item-font-weight: normal;
   --section-item-font-color: #575653;
   --toggle-button-width: 80px;
   --toggle-button-height: 48px;
@@ -33,20 +35,34 @@
   --toggle-button-background-color: #373634;
   --toggle-button-font-family: 'Dubai';
   --toggle-button-font-size: 8px;
-  --toggle-button-font-weight: 'bold';
+  --toggle-button-font-weight: bold;
   --toggle-button-font-color: #f2f2f2;
   --toggle-button-secondary-font-color: #afaeac;
   --pad-button-width: 84px;
   --pad-button-height: 84px;
-  --pad-button-border-radius: 2px;
-  --pad-button-background-color: white;
+  --pad-button-border-radius: 4px;
+  --pad-button-border-width: 2px;
+  --pad-button-border-color: #363636;
   --pad-button-font-family: 'Dubai';
   --pad-button-font-size: 16px;
-  --pad-button-font-weight: 'bold';
+  --pad-button-font-weight: bold;
   --pad-button-font-color: #575653;
 }
 
 html, body {
   margin: 0;
   min-height: 100vh;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
 }

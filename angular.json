@@ -53,6 +53,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/fonts/fonts.css",
               "src/styles.scss"
             ],
             "scripts": []
