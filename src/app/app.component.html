@@ -3,7 +3,19 @@
   <div role="link" tabindex="0" *ngIf="selectedMode" class="back-to-mode-selector" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
-  <div *ngIf="selectedMode; else modeSelector" class="selected-mode"></div>
+  <div *ngIf="selectedMode; else modeSelector" class="selected-mode">
+    <div class="selected-mode-sections">
+      <div *ngFor="let section of selectedMode.sections" class="selected-mode-section">
+        <div class="selected-mode-section-header">{{ section.title }}</div>
+        <div *ngFor="let sectionItem of section.items" class="selected-mode-section-item">
+          <div class="selected-mode-section-item-label">{{ sectionItem.label }}</div>
+          <div class="selected-mode-section-item-actions">
+            Dynamic actions here
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
   <ng-template #modeSelector>
     <div class="mode-selector">
       <div class="mode-selector-title">Select a Mode</div>

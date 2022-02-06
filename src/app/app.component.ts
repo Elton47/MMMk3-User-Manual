@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModeTypes } from 'src/app/enums';
+import { ActionType, ModeTypes } from 'src/app/enums';
 import { IMode } from 'src/app/interfaces';
 
 @Component({
@@ -17,7 +17,50 @@ export class AppComponent implements OnInit {
     this.modes = [
       {
         type: ModeTypes.CLIP,
-        sections: []
+        sections: [
+          {
+            title: 'CLIP TRIGGERING',
+            items: [
+              {
+                label: 'Activate CLIP mode, initially activated by default',
+                actions: [
+                  {
+                    actionType: ActionType.TOGGLE,
+                    label: 'PATTERN'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            title: 'SECTION 2',
+            items: [
+              {
+                label: 'Asdasdasdasd',
+                actions: [
+                  {
+                    actionType: ActionType.TOGGLE,
+                    label: 'PATTERN'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            title: 'SECTION 3',
+            items: [
+              {
+                label: 'Basdaushdasd',
+                actions: [
+                  {
+                    actionType: ActionType.TOGGLE,
+                    label: 'PATTERN'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       },
       {
         type: ModeTypes.SCENE,

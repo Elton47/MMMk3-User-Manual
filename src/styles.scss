@@ -9,20 +9,25 @@
   --mode-title-font-size: 44px;
   --mode-title-font-weight: normal;
   --mode-title-font-color: #373634;
-  --section-header-width: 562px;
+  --section-width-sm: 100%;
+  --section-width-md: 50%;
+  --section-width-lg: calc(100% / 3);
+  --section-width-xl: calc(100% / 4);
   --section-header-height: 40px;
-  --section-header-border-radius: 2px;
+  --section-header-border-radius: 4px;
   --section-header-horizontal-padding: 16px;
   --section-header-background-color: #373634;
   --section-header-font-family: 'Franklin Gothic Medium Cond';
   --section-header-font-size: 20px;
-  --section-header-font-weight: bold;
+  --section-header-font-weight: normal;
   --section-header-font-color: #f2f2f2;
-  --section-item-vertical-spacing: 32px;
-  --section-item-font-family: 'Franklin Gothic Book';
-  --section-item-font-size: 14px;
-  --section-item-font-weight: normal;
-  --section-item-font-color: #575653;
+  --section-header-letter-spacing: .5px;
+  --section-item-vertical-spacing: 24px;
+  --section-item-label-font-family: 'Franklin Gothic Book';
+  --section-item-label-font-size: 16px;
+  --section-item-label-font-weight: normal;
+  --section-item-label-font-color: #575653;
+  --section-item-label-letter-spacing: .5px;
   --toggle-button-width: 80px;
   --toggle-button-height: 48px;
   --toggle-button-border-radius: 2px;
@@ -52,6 +57,7 @@
 html, body {
   margin: 0;
   min-height: 100vh;
+  background-color: white;
 }
 
 body {
