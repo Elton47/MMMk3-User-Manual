@@ -17,7 +17,6 @@ header {
   font-size: var(--mode-title-font-size);
   font-weight: var(--mode-title-font-weight);
   color: var(--mode-title-font-color);
-  text-shadow: 0 1px 1px rgba(black, .2);
   &.no-mode-selected {
     font-size: calc(2vw + 3vh / 2);
   }
@@ -26,7 +25,7 @@ header {
     font-family: 'Dubai';
     font-size: 18px;
     cursor: pointer;
-    &:hover {
+    &:focus, &:hover {
       text-decoration: underline;
     }
   }
@@ -64,8 +63,9 @@ main {
         font-size: 24px;
         transition: background-color .2s;
         cursor: pointer;
-        &:hover {
-          background-color: #eeeeee;
+        &:focus, &:hover {
+          background-color: #f4f4f4;
+          outline: 1px solid var(--pad-button-border-color);
         }
       }
     }

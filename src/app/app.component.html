@@ -1,6 +1,6 @@
 <header [class.no-mode-selected]="!selectedMode">
   {{ selectedMode?.title ?? (selectedMode?.type ? (selectedMode?.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script' }}
-  <div *ngIf="selectedMode" class="back-to-mode-selector" (click)="selectedMode = undefined">Back to Mode Selector</div>
+  <div role="link" tabindex="0" *ngIf="selectedMode" class="back-to-mode-selector" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
   <div *ngIf="selectedMode; else modeSelector" class="selected-mode"></div>
@@ -8,7 +8,7 @@
     <div class="mode-selector">
       <div class="mode-selector-title">Select a Mode</div>
       <div class="mode-selector-list">
-        <div *ngFor="let mode of modes" class="mode-selector-list-item" (click)="selectedMode = mode">
+        <div role="button" tabindex="0" *ngFor="let mode of modes" class="mode-selector-list-item" (click)="selectedMode = mode" (keydown.ENTER)="selectedMode = mode">
           {{ mode.type }}
         </div>
       </div>
