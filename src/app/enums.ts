@@ -10,5 +10,9 @@ export enum ActionType {
   JOG_WHEEL_PUSH,
   PAD,
   SEPARATOR_SLASH,
-  SEPARATOR_PLUS
+  SEPARATOR_PLUS,
+  PLAY,
+  REC,
+  STOP,
+  SHIFT
 }

@@ -10,6 +10,7 @@ import { IMode } from 'src/app/interfaces';
 export class AppComponent implements OnInit {
   modes!: Array<IMode>;
   selectedMode?: IMode;
+  actionTypeEnum: typeof ActionType = ActionType;
 
   constructor() { }
 
@@ -26,7 +27,8 @@ export class AppComponent implements OnInit {
                 actions: [
                   {
                     actionType: ActionType.TOGGLE,
-                    label: 'PATTERN'
+                    label: 'DUPLICATE',
+                    secondaryLabel: 'Double'
                   }
                 ]
               }
@@ -39,8 +41,9 @@ export class AppComponent implements OnInit {
                 label: 'Asdasdasdasd',
                 actions: [
                   {
-                    actionType: ActionType.TOGGLE,
-                    label: 'PATTERN'
+                    actionType: ActionType.TOGGLE_SMALL,
+                    label: 'RESTART',
+                    secondaryLabel: 'Loop'
                   }
                 ]
               }
@@ -50,11 +53,34 @@ export class AppComponent implements OnInit {
             title: 'SECTION 3',
             items: [
               {
-                label: 'Basdaushdasd',
+                label: 'Play',
                 actions: [
                   {
-                    actionType: ActionType.TOGGLE,
-                    label: 'PATTERN'
+                    actionType: ActionType.PLAY
+                  }
+                ]
+              },
+              {
+                label: 'Record',
+                actions: [
+                  {
+                    actionType: ActionType.REC
+                  }
+                ]
+              },
+              {
+                label: 'Stop',
+                actions: [
+                  {
+                    actionType: ActionType.STOP
+                  }
+                ]
+              },
+              {
+                label: 'Shift',
+                actions: [
+                  {
+                    actionType: ActionType.SHIFT
                   }
                 ]
               }

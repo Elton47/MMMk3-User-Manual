@@ -13,7 +13,7 @@ export interface ISection {
 
 export interface ISectionItem {
   label?: string;
-  actions?: IAction | Array<IAction>;
+  actions?: Array<IAction>;
 }
 
 export interface IAction {
