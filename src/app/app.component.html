@@ -14,10 +14,15 @@
               <ng-container [ngSwitch]="action.actionType">
                 <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action }"></ng-container>
                 <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE_SMALL" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-button' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.PLAY" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'PLAY', iconClassName: 'play' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.REC" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'REC', secondaryLabel: 'Count-In', iconClassName: 'rec' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.STOP" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'STOP', iconClassName: 'stop' }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.PLAY" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'PLAY', styleClass: 'play-button', iconClassName: 'play' }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.REC" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'REC', styleClass: 'rec-button', secondaryLabel: 'Count-In', iconClassName: 'rec' }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.STOP" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'STOP', styleClass: 'stop-button', iconClassName: 'stop' }"></ng-container>
                 <ng-container *ngSwitchCase="actionTypeEnum.SHIFT" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'SHIFT', styleClass: 'shift-button' }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.MASCHINE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: maschineIcon }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.FAVOURITE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: favouriteIcon }"></ng-container>
+                <ng-container *ngSwitchCase="actionTypeEnum.BROWSER" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: browserIcon }"></ng-container>
+                <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
+                <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
               </ng-container>
             </ng-container>
           </div>
@@ -37,12 +42,31 @@
   </ng-template>
 </main>
 <footer></footer>
-<ng-template #toggleButton let-action="action" let-label="label" let-secondaryLabel="secondaryLabel" let-styleClass="styleClass" let-iconClassName="iconClassName">
+<ng-template #toggleButton let-action="action" let-label="label" let-secondaryLabel="secondaryLabel" let-styleClass="styleClass" let-iconClassName="iconClassName" let-iconTemplateRef="iconTemplateRef">
   <div [class]="'toggle-button ' + styleClass">
+    <ng-container *ngIf="iconTemplateRef" [ngTemplateOutlet]="iconTemplateRef"></ng-container>
     <div *ngIf="label ?? action.label" class="toggle-button-label">
       <div *ngIf="iconClassName" [class]="'toggle-button-icon ' + iconClassName"></div>
       {{ label ?? action.label }}
     </div>
     <div *ngIf="secondaryLabel ?? action.secondaryLabel" class="toggle-button-secondary-label">{{ secondaryLabel ?? action.secondaryLabel }}</div>
   </div>
+</ng-template>
+<ng-template #maschineIcon>
+  <svg xmlns="http://www.w3.org/2000/svg" width="199px" height="199px" viewBox="0 0 199 199" version="1.1" class="maschine-icon">
+    <path class="light" style=" stroke:none;fill-rule:nonzero;fill:rgb(13.699341%,12.199402%,12.5%);fill-opacity:1;" d="M 199 99.5 C 199 154.453125 154.453125 199 99.5 199 C 44.546875 199 0 154.453125 0 99.5 C 0 44.546875 44.546875 0 99.5 0 C 154.453125 0 199 44.546875 199 99.5 "/>
+    <path class="dark" style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 181.75 99.5 C 181.75 144.925781 144.925781 181.75 99.5 181.75 C 54.074219 181.75 17.25 144.925781 17.25 99.5 C 17.25 54.074219 54.074219 17.25 99.5 17.25 C 144.925781 17.25 181.75 54.074219 181.75 99.5 "/>
+    <path class="light" style=" stroke:none;fill-rule:nonzero;fill:rgb(13.699341%,12.199402%,12.5%);fill-opacity:1;" d="M 164.5 99.5 C 164.5 135.398438 135.398438 164.5 99.5 164.5 C 63.601563 164.5 34.5 135.398438 34.5 99.5 C 34.5 63.601563 63.601563 34.5 99.5 34.5 C 135.398438 34.5 164.5 63.601563 164.5 99.5 "/>
+    <path class="dark" style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 134.25 122.25 C 134.25 128.878906 128.878906 134.25 122.25 134.25 L 76.75 134.25 C 70.121094 134.25 64.75 128.878906 64.75 122.25 L 64.75 76.75 C 64.75 70.121094 70.121094 64.75 76.75 64.75 L 122.25 64.75 C 128.878906 64.75 134.25 70.121094 134.25 76.75 L 134.25 122.25 "/>
+  </svg>
+</ng-template>
+<ng-template #favouriteIcon>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="favourite-icon">
+    <path class="light" d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
+  </svg>
+</ng-template>
+<ng-template #browserIcon>
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 1024 1024" class="browser-icon">
+    <path class="light" d="M939.4278125 797.1940625L801.2253125 616.7403125c49.0246875-46.76625 79.8253125-112.239375 79.8253125-185.13 0-141.26625-115.303125-256.246875-256.891875-256.246875-141.75 0-256.8928125 114.980625-256.8928125 256.246875s115.303125 256.246875 256.8928125 256.246875c45.6375 0 88.3725-12.09375 125.6240625-32.896875l138.68625 181.0978125c6.28875 8.2246875 15.8034375 12.5784375 25.640625 12.5784375 6.7734375 0 13.7071875-2.09625 19.351875-6.61125 14.0296875-10.8046875 16.771875-30.8015625 5.96625-44.83125zM426.7728125 431.6103125c0-108.530625 88.5328125-196.7409375 197.3859375-196.7409375S821.54375 323.0796875 821.54375 431.609375s-88.53375 196.7409375-197.3859375 196.7409375S426.771875 540.14 426.771875 431.6103125z m-124.3340625-128.85H110.0515625c-17.739375 0-32.0915625-14.3521875-32.0915625-31.929375s14.353125-31.9303125 32.090625-31.9303125h192.388125c17.7384375 0 32.090625 14.353125 32.090625 31.9303125 0 17.578125-14.3521875 31.9303125-32.090625 31.9303125z m-7.7409375 316.2375H110.0515625c-17.739375 0-32.0915625-14.3521875-32.0915625-31.929375s14.353125-31.93125 32.090625-31.93125h184.6471875c17.739375 0 32.090625 14.353125 32.090625 31.93125s-14.35125 31.929375-32.090625 31.929375z m-37.8965625-158.521875H110.0515625c-17.739375 0-32.0915625-14.3521875-32.0915625-32.090625 0-17.739375 14.353125-32.0915625 32.090625-32.0915625h146.750625c17.7384375 0 32.090625 14.353125 32.090625 32.090625-0.16125 17.739375-14.5125 32.0915625-32.090625 32.0915625z m206.578125 322.6875H110.0515625c-17.739375 0-32.0915625-14.3521875-32.0915625-32.090625s14.353125-32.090625 32.090625-32.090625h353.32875c17.7384375 0 32.090625 14.35125 32.090625 32.090625 0 17.7384375-14.3521875 32.090625-32.090625 32.090625z"></path>
+  </svg>
 </ng-template>

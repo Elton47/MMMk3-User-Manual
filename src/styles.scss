@@ -34,9 +34,10 @@
   --toggle-small-button-width: 90px;
   --toggle-small-button-height: 30px;
   --toggle-small-button-border-radius: 3px;
+  --toggle-small-icon-button-width: 36px;
+  --toggle-small-icon-button-height: 30px;
+  --toggle-small-icon-button-border-radius: 3px;
   --toggle-button-padding: 4px 5px;
-  --toggle-button-combined-separator-font-size: 14px;
-  --toggle-button-combined-separator-horizontal-margin: 12px;
   --toggle-button-background-color: #373634;
   --toggle-button-font-family: 'Dubai';
   --toggle-button-font-size: 10px;
@@ -46,6 +47,13 @@
   --toggle-button-secondary-font-color: #afaeac;
   --toggle-button-letter-spacing: .5px;
   --toggle-button-icon-size: 6px;
+  --toggle-button-separator-horizontal-margin: 16px;
+  --toggle-button-separator-font-family: 'Franklin Gothic Book';
+  --toggle-button-separator-font-size: 36px;
+  --toggle-button-separator-font-weight: normal;
+  --toggle-button-separator-font-color: #373634;
+  --play-button-font-color: #26a82c;
+  --rec-button-font-color: #e00809;
   --pad-button-width: 84px;
   --pad-button-height: 84px;
   --pad-button-border-radius: 4px;
@@ -54,7 +62,7 @@
   --pad-button-font-family: 'Dubai';
   --pad-button-font-size: 16px;
   --pad-button-font-weight: bold;
-  --pad-button-font-color: #575653;
+  --pad-button-font-color: #373634;
 }
 
 html, body {

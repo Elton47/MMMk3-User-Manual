@@ -31,6 +31,61 @@ export class AppComponent implements OnInit {
                     secondaryLabel: 'Double'
                   }
                 ]
+              },
+              {
+                label: 'Stop clip of track',
+                actions: [
+                  {
+                    actionType: ActionType.STOP,
+                  },
+                  {
+                    actionType: ActionType.SEPARATOR_PLUS
+                  },
+                  {
+                    actionType: ActionType.PAD,
+                    label: '1-16'
+                  }
+                ]
+              },
+              {
+                label: 'Prev/Next Track',
+                actions: [
+                  {
+                    actionType: ActionType.TOGGLE_SMALL,
+                    label: 'CHORDS'
+                  },
+                  {
+                    actionType: ActionType.SEPARATOR_SLASH
+                  },
+                  {
+                    actionType: ActionType.TOGGLE_SMALL,
+                    label: 'STEP'
+                  }
+                ]
+              },
+              {
+                label: 'Maschine',
+                actions: [
+                  {
+                    actionType: ActionType.MASCHINE,
+                  }
+                ]
+              },
+              {
+                label: 'Favourite',
+                actions: [
+                  {
+                    actionType: ActionType.FAVOURITE,
+                  }
+                ]
+              },
+              {
+                label: 'Browser',
+                actions: [
+                  {
+                    actionType: ActionType.BROWSER,
+                  }
+                ]
               }
             ]
           },

@@ -92,6 +92,17 @@ main {
           display: flex;
           align-items: center;
         }
+        &-action-separator {
+          margin: 0 var(--toggle-button-separator-horizontal-margin);
+          font-family: var(--toggle-button-separator-font-family);
+          font-size: var(--toggle-button-separator-font-size);
+          font-weight: var(--toggle-button-separator-font-weight);
+          color: var(--toggle-button-separator-font-color);
+          &.slash-separator {
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
       }
     }
   }
@@ -143,6 +154,27 @@ main {
     height: var(--toggle-small-button-height);
     border-radius: var(--toggle-small-button-border-radius);
   }
+  &.small-icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--toggle-small-icon-button-width);
+    height: var(--toggle-small-icon-button-height);
+    border-radius: var(--toggle-small-icon-button-border-radius);
+  }
+  &.play-button, &.rec-button {
+    text-shadow: 0 0 3px rgba(white, .2);
+  }
+  &.play-button {
+    color: var(--play-button-font-color);
+  }
+  &.rec-button {
+    color: var(--rec-button-font-color);
+    .toggle-button-secondary-label {
+      color: var(--rec-button-font-color);
+      opacity: .5;
+    }
+  }
   &.shift-button .toggle-button-label {
     display: inline-flex;
     vertical-align: top;
@@ -178,9 +210,27 @@ main {
     background-color: transparent;
     border-top: calc(var(--toggle-button-icon-size) / 2 + 1px) solid transparent;
     border-bottom: calc(var(--toggle-button-icon-size) / 2 + 1px) solid transparent;
-    border-left: var(--toggle-button-icon-size) solid var(--toggle-button-font-color);
+    border-left: var(--toggle-button-icon-size) solid var(--play-button-font-color);
   }
   &.rec {
     border-radius: 100%;
+    box-shadow: 0 0 3px rgba(white, .2);
+    background-color: var(--rec-button-font-color);
+  }
+}
+.maschine-icon, .favourite-icon, .browser-icon {
+  width: 16px;
+  height: 16px;
+  &.favourite-icon {
+    width: 12px;
+    height: 12px;
+  }
+  path {
+    &.light {
+      fill: var(--toggle-button-font-color) !important;
+    }
+    &.dark {
+      fill: var(--toggle-button-background-color) !important;
+    }
   }
 }

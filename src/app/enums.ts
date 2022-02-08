@@ -6,6 +6,7 @@ export enum ModeTypes {
 export enum ActionType {
   TOGGLE,
   TOGGLE_SMALL,
+  TOUCH_STRIP,
   JOG_WHEEL_ROTATE,
   JOG_WHEEL_PUSH,
   PAD,
@@ -14,5 +15,8 @@ export enum ActionType {
   PLAY,
   REC,
   STOP,
-  SHIFT
+  SHIFT,
+  MASCHINE,
+  FAVOURITE,
+  BROWSER
 }
