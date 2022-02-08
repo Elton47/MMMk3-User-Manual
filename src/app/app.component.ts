@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { allActions, Pad } from 'src/app/actions';
 import { ActionType, ModeTypes } from 'src/app/enums';
 import { IMode } from 'src/app/interfaces';
 
@@ -24,92 +25,39 @@ export class AppComponent implements OnInit {
             items: [
               {
                 label: 'Activate CLIP mode, initially activated by default',
-                actions: [
-                  {
-                    actionType: ActionType.TOGGLE,
-                    label: 'DUPLICATE',
-                    secondaryLabel: 'Double'
-                  }
-                ]
+                actions: [allActions.duplicate]
               },
               {
                 label: 'Stop clip of track',
-                actions: [
-                  {
-                    actionType: ActionType.STOP,
-                  },
-                  {
-                    actionType: ActionType.SEPARATOR_PLUS
-                  },
-                  {
-                    actionType: ActionType.PAD,
-                    label: '1-16'
-                  }
-                ]
+                actions: [allActions.stop, allActions.plusSeparator, new Pad('1-16')]
               },
               {
                 label: 'Prev/Next Track',
-                actions: [
-                  {
-                    actionType: ActionType.TOGGLE_SMALL,
-                    label: 'CHORDS'
-                  },
-                  {
-                    actionType: ActionType.SEPARATOR_SLASH
-                  },
-                  {
-                    actionType: ActionType.TOGGLE_SMALL,
-                    label: 'STEP'
-                  }
-                ]
+                actions: [allActions.chords, allActions.slashSeparator, allActions.step]
               },
               {
                 label: 'Maschine',
-                actions: [
-                  {
-                    actionType: ActionType.MASCHINE,
-                  }
-                ]
+                actions: [allActions.maschine]
               },
               {
                 label: 'Favourite',
-                actions: [
-                  {
-                    actionType: ActionType.FAVOURITE,
-                  }
-                ]
+                actions: [allActions.favourite]
               },
               {
                 label: 'Browser',
-                actions: [
-                  {
-                    actionType: ActionType.BROWSER,
-                  }
-                ]
+                actions: [allActions.browser]
               },
               {
                 label: 'Jog wheel rotate',
-                actions: [
-                  {
-                    actionType: ActionType.JOG_WHEEL_ROTATE,
-                  }
-                ]
+                actions: [allActions.jogWheelRotate]
               },
               {
                 label: 'Jog wheel push',
-                actions: [
-                  {
-                    actionType: ActionType.JOG_WHEEL_PUSH,
-                  }
-                ]
+                actions: [allActions.jogWheelPush]
               },
               {
                 label: 'Touch strip',
-                actions: [
-                  {
-                    actionType: ActionType.TOUCH_STRIP,
-                  }
-                ]
+                actions: [allActions.touchStrip]
               }
             ]
           },
@@ -118,13 +66,7 @@ export class AppComponent implements OnInit {
             items: [
               {
                 label: 'Asdasdasdasd',
-                actions: [
-                  {
-                    actionType: ActionType.TOGGLE_SMALL,
-                    label: 'RESTART',
-                    secondaryLabel: 'Loop'
-                  }
-                ]
+                actions: [allActions.restart]
               }
             ]
           },
@@ -133,35 +75,19 @@ export class AppComponent implements OnInit {
             items: [
               {
                 label: 'Play',
-                actions: [
-                  {
-                    actionType: ActionType.PLAY
-                  }
-                ]
+                actions: [allActions.play]
               },
               {
                 label: 'Record',
-                actions: [
-                  {
-                    actionType: ActionType.REC
-                  }
-                ]
+                actions: [allActions.rec]
               },
               {
                 label: 'Stop',
-                actions: [
-                  {
-                    actionType: ActionType.STOP
-                  }
-                ]
+                actions: [allActions.stop]
               },
               {
                 label: 'Shift',
-                actions: [
-                  {
-                    actionType: ActionType.SHIFT
-                  }
-                ]
+                actions: [allActions.shift]
               }
             ]
           }
