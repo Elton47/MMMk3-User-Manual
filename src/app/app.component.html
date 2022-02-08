@@ -31,6 +31,12 @@
                     <div class="selected-mode-section-item-action-jog-wheel-inner-border-push"></div>
                   </div>
                 </div>
+                <div *ngSwitchCase="actionTypeEnum.TOUCH_STRIP" class="selected-mode-section-item-action-touch-strip">
+                  <div class="selected-mode-section-item-action-touch-strip-inner-box">
+                    <div class="selected-mode-section-item-action-touch-strip-inner-box-left-arrow"></div>
+                    <div class="selected-mode-section-item-action-touch-strip-inner-box-right-arrow"></div>
+                  </div>
+                </div>
                 <div *ngSwitchCase="actionTypeEnum.PAD" class="selected-mode-section-item-action-pad">{{ action.label }}</div>
                 <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
                 <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
