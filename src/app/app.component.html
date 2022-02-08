@@ -21,6 +21,17 @@
                 <ng-container *ngSwitchCase="actionTypeEnum.MASCHINE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: maschineIcon }"></ng-container>
                 <ng-container *ngSwitchCase="actionTypeEnum.FAVOURITE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: favouriteIcon }"></ng-container>
                 <ng-container *ngSwitchCase="actionTypeEnum.BROWSER" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: browserIcon }"></ng-container>
+                <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_ROTATE" class="selected-mode-section-item-action-jog-wheel">
+                  <div class="selected-mode-section-item-action-jog-wheel-inner-border">
+                    <div class="selected-mode-section-item-action-jog-wheel-inner-border-arrow"></div>
+                  </div>
+                </div>
+                <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_PUSH" class="selected-mode-section-item-action-jog-wheel">
+                  <div class="selected-mode-section-item-action-jog-wheel-inner-border">
+                    <div class="selected-mode-section-item-action-jog-wheel-inner-border-push"></div>
+                  </div>
+                </div>
+                <div *ngSwitchCase="actionTypeEnum.PAD" class="selected-mode-section-item-action-pad">{{ action.label }}</div>
                 <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
                 <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
               </ng-container>

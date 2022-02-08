@@ -86,6 +86,30 @@ export class AppComponent implements OnInit {
                     actionType: ActionType.BROWSER,
                   }
                 ]
+              },
+              {
+                label: 'Jog wheel rotate',
+                actions: [
+                  {
+                    actionType: ActionType.JOG_WHEEL_ROTATE,
+                  }
+                ]
+              },
+              {
+                label: 'Jog wheel push',
+                actions: [
+                  {
+                    actionType: ActionType.JOG_WHEEL_PUSH,
+                  }
+                ]
+              },
+              {
+                label: 'Touch strip',
+                actions: [
+                  {
+                    actionType: ActionType.TOUCH_STRIP,
+                  }
+                ]
               }
             ]
           },
