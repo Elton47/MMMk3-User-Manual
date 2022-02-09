@@ -50,14 +50,11 @@ main {
     &-section {
       width: var(--section-width-sm);
       padding: 16px 28px;
-      @media screen and (min-width: 921px) {
+      @media screen and (min-width: 1280px) {
         width: var(--section-width-md);
       }
-      @media screen and (min-width: 1281px) {
+      @media screen and (min-width: 1920px) {
         width: var(--section-width-lg);
-      }
-      @media screen and (min-width: 1921px) {
-        width: var(--section-width-xl);
       }
       &-header {
         display: flex;
