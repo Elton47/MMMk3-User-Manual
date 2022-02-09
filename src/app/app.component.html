@@ -1,62 +1,72 @@
-<header [class.no-mode-selected]="!selectedMode">
-  {{ selectedMode?.title ?? (selectedMode?.type ? (selectedMode?.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script' }}
-  <div role="link" tabindex="0" *ngIf="selectedMode" class="back-to-mode-selector" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
+<header>
+  <span>{{ selectedHardware ?? 'Select your Hardware' }}</span>
+  <span *ngIf="selectedHardware">{{ selectedMode ? (selectedMode.title ?? (selectedMode?.type ? (selectedMode?.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select a Mode' }}</span>
+  <div *ngIf="selectedHardware && !selectedMode" role="link" tabindex="0" class="back-to-hardware-selector" (click)="selectedHardware = undefined" (keydown.ENTER)="selectedHardware = undefined">Back to Hardware Selector</div>
+  <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
-  <div *ngIf="selectedMode; else modeSelector" class="selected-mode">
+  <div *ngIf="selectedHardware && selectedMode" class="selected-mode">
     <div class="selected-mode-sections">
-      <div *ngFor="let section of selectedMode.sections" class="selected-mode-section">
-        <div class="selected-mode-section-header">{{ section.title }}</div>
-        <div *ngFor="let sectionItem of section.items" class="selected-mode-section-item">
-          <div class="selected-mode-section-item-label">{{ sectionItem.label }}</div>
-          <div *ngIf="sectionItem.actions?.length" class="selected-mode-section-item-actions">
-            <ng-container *ngFor="let action of sectionItem.actions" class="selected-mode-section-item-action">
-              <ng-container [ngSwitch]="action.actionType">
-                <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE_SMALL" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-button' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.PLAY" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'PLAY', styleClass: 'play-button', iconClassName: 'play' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.REC" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'REC', styleClass: 'rec-button', secondaryLabel: 'Count-In', iconClassName: 'rec' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.STOP" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'STOP', styleClass: 'stop-button', iconClassName: 'stop' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.SHIFT" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'SHIFT', styleClass: 'shift-button' }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.MASCHINE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: maschineIcon }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.FAVOURITE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: favouriteIcon }"></ng-container>
-                <ng-container *ngSwitchCase="actionTypeEnum.BROWSER" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: browserIcon }"></ng-container>
-                <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_ROTATE" class="selected-mode-section-item-action-jog-wheel">
-                  <div class="selected-mode-section-item-action-jog-wheel-inner-border">
-                    <div class="selected-mode-section-item-action-jog-wheel-inner-border-arrow"></div>
+      <ng-container *ngFor="let section of selectedMode.sections">
+        <div *ngIf="!section.hardwareType || section.hardwareType === selectedHardware" class="selected-mode-section">
+          <div class="selected-mode-section-header">{{ section.title }}</div>
+          <div *ngFor="let sectionItem of section.items" class="selected-mode-section-item">
+            <div class="selected-mode-section-item-label">{{ sectionItem.label }}</div>
+            <div *ngIf="sectionItem.actions?.length" class="selected-mode-section-item-actions">
+              <ng-container *ngFor="let action of sectionItem.actions" class="selected-mode-section-item-action">
+                <ng-container [ngSwitch]="action.actionType">
+                  <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.TOGGLE_SMALL" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-button' }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.PLAY" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'PLAY', styleClass: 'play-button', iconClassName: 'play' }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.REC" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'REC', styleClass: 'rec-button', secondaryLabel: 'Count-In', iconClassName: 'rec' }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.STOP" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'STOP', styleClass: 'stop-button', iconClassName: 'stop' }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.SHIFT" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, label: 'SHIFT', styleClass: 'shift-button' }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.MASCHINE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: maschineIcon }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.FAVOURITE" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: favouriteIcon }"></ng-container>
+                  <ng-container *ngSwitchCase="actionTypeEnum.BROWSER" [ngTemplateOutlet]="toggleButton" [ngTemplateOutletContext]="{ action, styleClass: 'small-icon-button', iconTemplateRef: browserIcon }"></ng-container>
+                  <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_ROTATE" class="selected-mode-section-item-action-jog-wheel">
+                    <div class="selected-mode-section-item-action-jog-wheel-inner-border">
+                      <div class="selected-mode-section-item-action-jog-wheel-inner-border-arrow"></div>
+                    </div>
                   </div>
-                </div>
-                <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_PUSH" class="selected-mode-section-item-action-jog-wheel">
-                  <div class="selected-mode-section-item-action-jog-wheel-inner-border">
-                    <div class="selected-mode-section-item-action-jog-wheel-inner-border-push"></div>
+                  <div *ngSwitchCase="actionTypeEnum.JOG_WHEEL_PUSH" class="selected-mode-section-item-action-jog-wheel">
+                    <div class="selected-mode-section-item-action-jog-wheel-inner-border">
+                      <div class="selected-mode-section-item-action-jog-wheel-inner-border-push"></div>
+                    </div>
                   </div>
-                </div>
-                <div *ngSwitchCase="actionTypeEnum.TOUCH_STRIP" class="selected-mode-section-item-action-touch-strip">
-                  <div class="selected-mode-section-item-action-touch-strip-inner-box">
-                    <div class="selected-mode-section-item-action-touch-strip-inner-box-left-arrow"></div>
-                    <div class="selected-mode-section-item-action-touch-strip-inner-box-right-arrow"></div>
+                  <div *ngSwitchCase="actionTypeEnum.TOUCH_STRIP" class="selected-mode-section-item-action-touch-strip">
+                    <div class="selected-mode-section-item-action-touch-strip-inner-box">
+                      <div class="selected-mode-section-item-action-touch-strip-inner-box-left-arrow"></div>
+                      <div class="selected-mode-section-item-action-touch-strip-inner-box-right-arrow"></div>
+                    </div>
                   </div>
-                </div>
-                <div *ngSwitchCase="actionTypeEnum.PAD" class="selected-mode-section-item-action-pad">{{ action.label }}</div>
-                <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
-                <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
+                  <div *ngSwitchCase="actionTypeEnum.PAD" class="selected-mode-section-item-action-pad">{{ action.label }}</div>
+                  <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
+                  <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
+                </ng-container>
               </ng-container>
-            </ng-container>
+            </div>
           </div>
         </div>
+      </ng-container>
+    </div>
+  </div>
+  <div *ngIf="!selectedHardware" class="hardware-selector">
+    <!-- <div class="hardware-selector-title">Select your Hardware</div> -->
+    <div class="hardware-selector-list">
+      <div role="button" tabindex="0" *ngFor="let hardware of hardwares" class="hardware-selector-list-item" (click)="selectedHardware = hardware" (keydown.ENTER)="selectedHardware = hardware">
+        {{ hardware }}
       </div>
     </div>
   </div>
-  <ng-template #modeSelector>
-    <div class="mode-selector">
-      <div class="mode-selector-title">Select a Mode</div>
-      <div class="mode-selector-list">
-        <div role="button" tabindex="0" *ngFor="let mode of modes" class="mode-selector-list-item" (click)="selectedMode = mode" (keydown.ENTER)="selectedMode = mode">
-          {{ mode.type }}
-        </div>
+  <div *ngIf="selectedHardware && !selectedMode" class="mode-selector">
+    <!-- <div class="mode-selector-title">Select a Mode</div> -->
+    <div class="mode-selector-list">
+      <div role="button" tabindex="0" *ngFor="let mode of modes" class="mode-selector-list-item" (click)="selectedMode = mode" (keydown.ENTER)="selectedMode = mode">
+        {{ mode.type }}
       </div>
     </div>
-  </ng-template>
+  </div>
 </main>
 <footer></footer>
 <ng-template #toggleButton let-action="action" let-label="label" let-secondaryLabel="secondaryLabel" let-styleClass="styleClass" let-iconClassName="iconClassName" let-iconTemplateRef="iconTemplateRef">

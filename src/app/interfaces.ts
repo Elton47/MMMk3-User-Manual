@@ -1,4 +1,4 @@
-import { ActionType, ModeTypes } from "src/app/enums";
+import { ActionType, HardwareTypes, ModeTypes } from "src/app/enums";
 
 export interface IMode {
   type: ModeTypes;
@@ -8,6 +8,7 @@ export interface IMode {
 
 export interface ISection {
   title?: string;
+  hardwareType?: HardwareTypes;
   items?: Array<ISectionItem>;
 }
 

@@ -1,6 +1,12 @@
+export enum HardwareTypes {
+  MASCHINE_MK3 = 'MASCHINE MK3',
+  MASCHINE_MIKRO_MK3 = 'MASCHINE MIKRO MK3'
+}
+
 export enum ModeTypes {
   CLIP = 'CLIP',
-  SCENE = 'SCENE'
+  SCENE = 'SCENE',
+  TRACK = 'TRACK'
 }
 
 export enum ActionType {
