@@ -27,23 +27,23 @@ export class AppComponent implements OnInit {
             title: 'CLIP TRIGGERING',
             items: [
               {
-                label: 'Activates CLIP mode, initially activated by default',
+                label: 'Activate CLIP mode, initially activated by default',
                 actions: [allActions.pattern]
               },
               {
-                label: 'Launches clip, or creates new clip and triggers session record',
+                label: 'Launch clip, or create new clip and trigger session record',
                 actions: [new Pad('1-16')]
               },
               {
-                label: 'Temporarily activates CLIP mode, launches clip (or creates new) and returns back to previous mode',
+                label: 'Temporarily activate CLIP mode, launch clip (or create new) and return back to previous mode',
                 actions: [allActions.pattern, allActions.plusSeparator, new Pad('1-16')]
               },
               {
-                label: 'Temporarily activates CLIP mode, stops clip of track (Pad 1-16 for 16 tracks) and returns back to previous mode',
-                actions: [allActions.stop, allActions.plusSeparator, new Pad('1-16')]
+                label: 'Temporarily activate TRACK mode, stop clip of track of corresponding pad (or multiple tracks) and return back to previous mode',
+                actions: [allActions.stop, allActions.plusSeparator, new Pad('1-15')]
               },
               {
-                label: 'Stops all clips without stopping the playback',
+                label: 'Stop all clips without stopping the playback',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.stop]
               }
             ]
@@ -52,23 +52,23 @@ export class AppComponent implements OnInit {
             title: 'CLIP MODIFICATION',
             items: [
               {
-                label: 'Duplicates the focused clip',
+                label: 'Duplicate the focused clip',
                 actions: [allActions.duplicate]
               },
               {
-                label: 'Duplicates clip of corresponding pad',
+                label: 'Duplicate clip of corresponding pad',
                 actions: [allActions.duplicate, allActions.plusSeparator, new Pad('1-16')]
               },
               {
-                label: 'Doubles the focused clip (duplicates clip contents)',
+                label: 'Double the focused clip (duplicate clip contents)',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.duplicate]
               },
               {
-                label: 'Deletes the focused clip',
+                label: 'Delete the focused clip',
                 actions: [allActions.erase]
               },
               {
-                label: 'Deletes clip of corresponding pad',
+                label: 'Delete clip of corresponding pad',
                 actions: [allActions.erase, allActions.plusSeparator, new Pad('1-16')]
               }
             ]
@@ -95,15 +95,15 @@ export class AppComponent implements OnInit {
             title: 'SCENE TRIGGERING',
             items: [
               {
-                label: 'Activates SCENE mode',
+                label: 'Activate SCENE mode',
                 actions: [allActions.scene]
               },
               {
-                label: 'Launches scene',
+                label: 'Launch scene',
                 actions: [new Pad('1-16')]
               },
               {
-                label: 'Temporarily activates SCENE mode, launches scene and returns back to previous mode',
+                label: 'Temporarily activate SCENE mode, launch scene and return back to previous mode',
                 actions: [allActions.scene, allActions.plusSeparator, new Pad('1-16')]
               }
             ]
@@ -112,11 +112,11 @@ export class AppComponent implements OnInit {
             title: 'SCENE MODIFICATION',
             items: [
               {
-                label: 'Duplicates scene of corresponding pad',
+                label: 'Duplicate scene of corresponding pad',
                 actions: [allActions.duplicate, allActions.plusSeparator, new Pad('1-16')]
               },
               {
-                label: 'Deletes scene of corresponding pad',
+                label: 'Delete scene of corresponding pad',
                 actions: [allActions.erase, allActions.plusSeparator, new Pad('1-16')]
               }
             ]
