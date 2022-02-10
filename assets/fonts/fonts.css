@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Franklin Gothic Medium Cond';
+  src: url('./FRAMDCN.TTF');
+}
+@font-face {
+  font-family: 'Franklin Gothic Book';
+  src: url('./FRABK.TTF');
+}
+@font-face {
+  font-family: 'Dubai';
+  font-weight: normal;
+  src: url('./DUBAI-REGULAR.TTF');
+}
+@font-face {
+  font-family: 'Dubai';
+  font-weight: bold;
+  src: url('./DUBAI-BOLD.TTF');
+}
