@@ -113,7 +113,7 @@
           "builder": "angular-cli-ghpages:deploy",
           "options": {
             "baseHref": "https://elton47.github.io/MMMk3-User-Manual/",
-            "name": "Elton Memishaj",
+            "name": "Elton47",
             "email": "eltoni.memishi@live.com"
           }
         }
