@@ -6,7 +6,13 @@ export enum HardwareTypes {
 export enum ModeTypes {
   CLIP = 'CLIP',
   SCENE = 'SCENE',
-  TRACK = 'TRACK'
+  TRACK = 'TRACK',
+  DRUM = 'DRUM',
+  KEYBOARD = 'KEYBOARD',
+  SHIFT = 'SHIFT',
+  METERING_AND_EVENTS = 'METERING & EVENTS',
+  TRANSPORT_AND_NOTE_REPEAT = 'TRANSPORT & NOTE REPEAT',
+  OTHER = 'OTHER'
 }
 
 export enum ActionType {

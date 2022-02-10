@@ -13,6 +13,7 @@ export class AppComponent implements OnInit {
   selectedHardware?: HardwareTypes;
   modes!: Array<IMode>;
   selectedMode?: IMode;
+  modeTypesEnum: typeof ModeTypes = ModeTypes;
   actionTypeEnum: typeof ActionType = ActionType;
 
   constructor() { }
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit {
                 actions: [allActions.pattern]
               },
               {
-                label: 'Launch clip, or create new clip and trigger session record',
+                label: 'Launch clip, or create new clip and trigger session record<br><small><em>Pad color will match Live\'s clip color or will pulse red if new clip is created using pad 1-16, triggering session record</em></small>',
                 actions: [new Pad('1-16')]
               },
               {
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
             ]
           },
           {
-            title: 'CLIP MODIFICATION',
+            title: 'CLIP ACTIONS',
             items: [
               {
                 label: 'Duplicate the focused clip',
@@ -77,11 +78,11 @@ export class AppComponent implements OnInit {
             title: 'NAVIGATION',
             items: [
               {
-                label: 'Scroll left/right to reveal clips of other tracks',
+                label: 'Scroll left/right to show clips of other tracks',
                 actions: [allActions.jogWheelRotate]
               },
               {
-                label: 'Scroll up/down to reveal more clips of focused tracks',
+                label: 'Scroll up/down to show more clips of focused tracks',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               },
             ]
@@ -99,7 +100,7 @@ export class AppComponent implements OnInit {
                 actions: [allActions.scene]
               },
               {
-                label: 'Launch scene',
+                label: 'Launch scene<br><small><em>Pad color will match Live\'s scene color</em></small>',
                 actions: [new Pad('1-16')]
               },
               {
@@ -109,7 +110,7 @@ export class AppComponent implements OnInit {
             ]
           },
           {
-            title: 'SCENE MODIFICATION',
+            title: 'SCENE ACTIONS',
             items: [
               {
                 label: 'Duplicate scene of corresponding pad',
@@ -125,7 +126,7 @@ export class AppComponent implements OnInit {
             title: 'NAVIGATION',
             items: [
               {
-                label: 'Scroll up/down to reveal more scenes',
+                label: 'Scroll up/down to show more scenes',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               },
             ]
@@ -166,11 +167,74 @@ export class AppComponent implements OnInit {
             items: this.getTrackSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_MIKRO_MK3)
           }
         ]
+      },
+      {
+        type: ModeTypes.DRUM,
+        sections: [
+          {
+            title: 'DRUM PAD TRIGGERING',
+            items: [
+              {
+                label: 'Activate DRUM mode, selected track must have Live\'s Drum Rack device loaded<br><small><em>Supports note repeat</em></small>',
+                actions: [allActions.padMode]
+              },
+              {
+                label: `While in DRUM mode, press the "${allActions.padMode.label}" button again to toggle ON/OFF auto-coloring of 1-16 pads, based on the name of drum pad/chain (i.e.: "Kick" is auto-colored in red)`,
+                actions: [allActions.padMode]
+              },
+              {
+                label: 'Trigger up to 16 drum pads',
+                actions: [new Pad('1-16')]
+              },
+              {
+                label: 'Scroll up/down to show more drum pads, in increments of 1 row (4 pads)',
+                actions: [allActions.jogWheelRotate]
+              },
+              {
+                label: 'Scroll up/down to show more drum pads, in increments of 4 rows (16 pads)',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
+              }
+            ]
+          },
+          {
+            title: 'DRUM PAD ACTIONS',
+            items: [
+              {
+                label: ''
+              }
+            ]
+          }
+        ]
+      },
+      {
+        type: ModeTypes.KEYBOARD,
+        sections: [
+        ]
+      },
+      {
+        type: ModeTypes.SHIFT,
+        sections: [
+        ]
+      },
+      {
+        type: ModeTypes.METERING_AND_EVENTS,
+        sections: [
+        ]
+      },
+      {
+        type: ModeTypes.TRANSPORT_AND_NOTE_REPEAT,
+        sections: [
+        ]
+      },
+      {
+        type: ModeTypes.OTHER,
+        sections: [
+        ]
       }
     ];
     // MOCK BELOW
     // this.selectedHardware = HardwareTypes.MASCHINE_MIKRO_MK3;
-    // this.selectedMode = this.modes[2];
+    // this.selectedMode = this.modes[3];
   }
 
   private getTrackSectionItemsBySectionTypeAndHardwareType(sectionType: 'track-selection' | 'track-actions' | 'selected-track', hardwareType: HardwareTypes): Array<ISectionItem> {
@@ -178,11 +242,7 @@ export class AppComponent implements OnInit {
     switch (sectionType) {
       case 'track-selection': sectionItems = [
         {
-          label: 'Select track from up to 15 visible tracks, including Return tracks',
-          actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, new Pad('1-15')]
-        },
-        {
-          label: 'Select and expand/collapse group track to show/hide child tracks in Live and in TRACK mode',
+          label: 'Select track from up to 15 visible tracks, including Return tracks<br><small><em>Pad color will match Live\'s track color or white if muted or muted via solo</em></small>',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, new Pad('1-15')]
         },
         {
@@ -202,7 +262,7 @@ export class AppComponent implements OnInit {
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, new Pad('16')]
         },
         {
-          label: 'Scroll left/right to reveal more tracks',
+          label: 'Scroll left/right to show more tracks',
           actions: [allActions.jogWheelRotate]
         }
       ]; break;
@@ -216,7 +276,7 @@ export class AppComponent implements OnInit {
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase, allActions.plusSeparator, new Pad('1-15')]
         },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
-          label: 'Arm/Unarm track of corresponding pad (or multiple tracks, MASCHINE MIKRO MK3 only)',
+          label: 'Arm/Unarm track of corresponding pad (or multiple tracks)<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
           actions: [allActions.select, allActions.plusSeparator, new Pad('1-15')]
         } : undefined,
         {
@@ -230,6 +290,10 @@ export class AppComponent implements OnInit {
         {
           label: 'Stop clip of track of corresponding pad (or multiple tracks)',
           actions: [allActions.stop, allActions.plusSeparator, new Pad('1-15')]
+        },
+        {
+          label: 'Unsolo and unmute all tracks',
+          actions: [allActions.shift, allActions.plusSeparator, allActions.mute]
         }
       ]; break;
       case 'selected-track': sectionItems = [
@@ -242,7 +306,7 @@ export class AppComponent implements OnInit {
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase]
         },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
-          label: 'Arm/Unarm selected track (MASCHINE MIKRO MK3 only)',
+          label: 'Arm/Unarm selected track<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
           actions: [allActions.select]
         } : undefined,
         {
