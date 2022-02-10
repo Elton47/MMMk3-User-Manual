@@ -11,7 +11,7 @@
         <div *ngIf="!section.hardwareType || section.hardwareType === selectedHardware" class="selected-mode-section">
           <div class="selected-mode-section-header">{{ section.title }}</div>
           <div *ngFor="let sectionItem of section.items" class="selected-mode-section-item">
-            <div class="selected-mode-section-item-label">{{ sectionItem.label }}</div>
+            <div class="selected-mode-section-item-label" [innerHTML]="sectionItem.label"></div>
             <div *ngIf="sectionItem.actions?.length" class="selected-mode-section-item-actions">
               <ng-container *ngFor="let action of sectionItem.actions" class="selected-mode-section-item-action">
                 <ng-container [ngSwitch]="action.actionType">
