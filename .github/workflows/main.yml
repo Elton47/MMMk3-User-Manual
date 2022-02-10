@@ -19,7 +19,7 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -32,7 +32,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
-        with: 
+        with:
           node-version: ${{ matrix.node-version }}
       - name: Cache node modules
         id: cache-nodemodules
@@ -51,9 +51,6 @@ jobs:
         if: steps.cache-nodemodules.outputs.cache-hit != 'true'
         run: |
           npm ci
-      - name: Build
-        run: |
-          npm run build -- --prod
-      - name: Deploy
+      - name: Build and Deploy
         run: |
           npm run deploy
