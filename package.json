@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "deploy": "ng deploy --base-href=/MMMk3-User-Manual/"
+    "deploy": "ng deploy --base-href=/MMMk3-User-Manual/ --no-silent"
   },
   "private": true,
   "dependencies": {
