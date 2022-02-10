@@ -1,8 +1,8 @@
 <header>
-  <span>{{ selectedHardware ?? 'Select your Hardware' }}</span>
-  <span *ngIf="selectedHardware">{{ selectedMode ? (selectedMode.title ?? (selectedMode?.type ? (selectedMode?.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select a Mode' }}</span>
-  <div *ngIf="selectedHardware && !selectedMode" role="link" tabindex="0" class="back-to-hardware-selector" (click)="selectedHardware = undefined" (keydown.ENTER)="selectedHardware = undefined">Back to Hardware Selector</div>
-  <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
+  <span class="selected-hardware-label">{{ selectedHardware ?? 'Select your Hardware' }}</span>
+  <span *ngIf="selectedHardware" class="selected-mode-label">{{ selectedMode ? (selectedMode.title ?? (selectedMode?.type ? (selectedMode?.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select a Mode' }}</span>
+  <div *ngIf="selectedHardware && !selectedMode" role="link" tabindex="0" class="back-to-hardware-selector-label" (click)="selectedHardware = undefined" (keydown.ENTER)="selectedHardware = undefined">Back to Hardware Selector</div>
+  <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
   <div *ngIf="selectedHardware && selectedMode" class="selected-mode">
@@ -68,7 +68,7 @@
 </main>
 <footer></footer>
 <ng-template #toggleButton let-action="action" let-label="label" let-secondaryLabel="secondaryLabel" let-styleClass="styleClass" let-iconClassName="iconClassName" let-iconTemplateRef="iconTemplateRef">
-  <div [class]="'toggle-button ' + styleClass">
+  <div [class]="'toggle-button ' + (styleClass ?? '')">
     <ng-container *ngIf="iconTemplateRef" [ngTemplateOutlet]="iconTemplateRef"></ng-container>
     <div *ngIf="label ?? action.label" class="toggle-button-label">
       <div *ngIf="iconClassName" [class]="'toggle-button-icon ' + iconClassName"></div>

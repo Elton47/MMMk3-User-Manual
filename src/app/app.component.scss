@@ -25,7 +25,11 @@ header {
   @media screen and (max-width: 900px) {
     font-size: calc(2vw + 3vh / 2);
   }
-  .back-to-hardware-selector, .back-to-mode-selector {
+  .selected-hardware-label, .selected-mode-label, .back-to-hardware-selector-label, .back-to-mode-selector-label {
+    padding: 0 8px;
+    line-height: 1em;
+  }
+  .back-to-hardware-selector-label, .back-to-mode-selector-label {
     font-family: 'Dubai';
     font-size: 18px;
     cursor: pointer;
@@ -240,6 +244,16 @@ main {
               font-size: 18px;
               font-weight: bold;
             }
+          }
+        }
+        @media screen and (max-width: 768px) {
+          flex-direction: column;
+          align-items: initial;
+          justify-content: initial;
+          padding: 8px 16px 16px;
+          border: 1px dashed var(--section-item-label-font-color);
+          &-actions {
+            margin-top: 16px;
           }
         }
       }
