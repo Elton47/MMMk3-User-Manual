@@ -175,24 +175,16 @@ export class AppComponent implements OnInit {
             title: 'DRUM PAD TRIGGERING',
             items: [
               {
-                label: 'Activate DRUM mode, selected track must have Live\'s Drum Rack device loaded<br><small><em>Supports note repeat</em></small>',
+                label: 'Activate DRUM mode<br><small><em>Selected track must have Live\'s Drum Rack device loaded<br>Supports note repeat</em></small>',
                 actions: [allActions.padMode]
               },
               {
-                label: `While in DRUM mode, press the "${allActions.padMode.label}" button again to toggle ON/OFF auto-coloring of 1-16 pads, based on the name of drum pad/chain (i.e.: "Kick" is auto-colored in red)`,
+                label: `Toggle auto-coloring of 1-16 hardware pads based on the name of drum pad/chain (i.e.: "Kick" is auto-colored in red)<br><small><em>Only while DRUM mode is activated</em></small>`,
                 actions: [allActions.padMode]
               },
               {
-                label: 'Trigger up to 16 drum pads',
+                label: 'Trigger up to 16 visible drum pads',
                 actions: [new Pad('1-16')]
-              },
-              {
-                label: 'Scroll up/down to show more drum pads, in increments of 1 row (4 pads)',
-                actions: [allActions.jogWheelRotate]
-              },
-              {
-                label: 'Scroll up/down to show more drum pads, in increments of 4 rows (16 pads)',
-                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               }
             ]
           },
@@ -200,7 +192,25 @@ export class AppComponent implements OnInit {
             title: 'DRUM PAD ACTIONS',
             items: [
               {
-                label: ''
+                label: 'Solo/unsolo drum pad',
+                actions: [allActions.solo, allActions.plusSeparator, new Pad('1-16')]
+              },
+              {
+                label: 'Mute/unmute drum pad',
+                actions: [allActions.mute, allActions.plusSeparator, new Pad('1-16')]
+              }
+            ]
+          },
+          {
+            title: 'NAVIGATION',
+            items: [
+              {
+                label: 'Scroll up/down to show more drum pads, in increments of 1 row (4 pads)',
+                actions: [allActions.jogWheelRotate]
+              },
+              {
+                label: 'Scroll up/down to show more drum pads, in increments of 4 rows (16 pads)',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               }
             ]
           }
@@ -304,6 +314,10 @@ export class AppComponent implements OnInit {
         {
           label: 'Delete selected track',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase]
+        },
+        {
+          label: 'Toggle Hot-Swap for selected device of track<br><small><em>It will open Live\'s Browser panel if it is closed</em></small>',
+          actions: [allActions.shift, allActions.plusSeparator, allActions.erase]
         },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
           label: 'Arm/Unarm selected track<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
