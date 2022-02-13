@@ -268,6 +268,95 @@ export class AppComponent implements OnInit {
       {
         type: ModeTypes.SHIFT,
         sections: [
+          {
+            title: 'GENERAL ACTIONS',
+            items: [
+              {
+                label: 'Activate SHIFT mode (hold)',
+                actions: [allActions.shift]
+              },
+              {
+                label: 'Undo',
+                secondaryLabel: 'Pad will only light (white) if Undo can be performed',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('1')]
+              },
+              {
+                label: 'Redo',
+                secondaryLabel: 'Pad will only light (white) if Redo can be performed',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('2')]
+              },
+              {
+                label: 'Clear Auto',
+                secondaryLabel: 'Clear all envelopes of selected clip<br>Pad will only light if there is at least one clip envelope that can be cleared',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('10')]
+              }
+            ]
+          },
+          {
+            title: 'NOTE ACTIONS',
+            items: [
+              {
+                label: 'Quantize',
+                secondaryLabel: 'Quantize selected (or all) notes based on clip\'s grid quantization setting',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('5')]
+              },
+              {
+                label: 'Quantize 50%',
+                secondaryLabel: 'Quantize 50% selected (or all) notes based on clip\'s grid quantization setting',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('6')]
+              },
+              {
+                label: 'Nudge <',
+                secondaryLabel: 'Nudge left selected (or all) notes based on clip\'s grid quantization setting',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('7')]
+              },
+              {
+                label: 'Nudge >',
+                secondaryLabel: 'Nudge right selected (or all) notes based on clip\'s grid quantization setting',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('8')]
+              },
+              {
+                label: 'Clear',
+                secondaryLabel: 'Clear selected (or all) notes',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('9')]
+              },
+              {
+                label: 'Copy',
+                secondaryLabel: 'Copy selected (or all) notes',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('11')]
+              },
+              {
+                label: 'Paste',
+                secondaryLabel: 'Paste selected (or all) notes<br>Pad will only light (white) if there are notes copied',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('12')]
+              }
+            ]
+          },
+          {
+            title: 'NOTE TRANSPOSITION',
+            items: [
+              {
+                label: 'Semitone-',
+                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('13')]
+              },
+              {
+                label: 'Semitone+',
+                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('14')]
+              },
+              {
+                label: 'Octave-',
+                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 octave',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('15')]
+              },
+              {
+                label: 'Octave+',
+                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 octave',
+                actions: [allActions.shift, allActions.plusSeparator, new Pad('16')]
+              }
+            ]
+          }
         ]
       },
       {
