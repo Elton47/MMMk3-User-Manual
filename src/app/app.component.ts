@@ -350,10 +350,6 @@ export class AppComponent implements OnInit {
           label: 'Delete selected track',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase]
         },
-        {
-          label: 'Toggle Hot-Swap for selected device of track<br><small><em>It will open Live\'s Browser panel if it is closed</em></small>',
-          actions: [allActions.shift, allActions.plusSeparator, allActions.erase]
-        },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
           label: 'Arm/Unarm selected track<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
           actions: [allActions.select]
@@ -365,6 +361,14 @@ export class AppComponent implements OnInit {
         {
           label: 'Mute/Unmute selected track',
           actions: [allActions.mute]
+        },
+        {
+          label: 'Toggle Hot-Swap for selected device of track<br><small><em>It will open Live\'s Browser panel if it is closed</em></small>',
+          actions: [allActions.shift, allActions.plusSeparator, allActions.erase]
+        },
+        {
+          label: 'Change volume of selected track in increments/decrements of 1dB',
+          actions: [allActions.volume, allActions.plusSeparator, allActions.jogWheelRotate]
         }
       ]; break;
     }
