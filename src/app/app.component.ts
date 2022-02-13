@@ -230,7 +230,7 @@ export class AppComponent implements OnInit {
               {
                 label: 'Activate KEYBOARD mode',
                 secondaryLabel: 'Fully integrated with Live 11\'s new per-clip "Scales" and "Root Note" features<br>Scale and/or root note changes from the hardware will reflect to Live, and vice-versa<br>Supports note repeat',
-                actions: [allActions.padMode, allActions.slashSeparator, allActions.keyboard]
+                actions: [allActions.keyboard]
               },
               {
                 label: 'Trigger notes',
@@ -386,7 +386,7 @@ export class AppComponent implements OnInit {
     switch (sectionType) {
       case 'track-selection': sectionItems = [
         {
-          label: 'Activate TRACK mode (hold/unpinned)',
+          label: 'Activate TRACK mode (hold)',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select]
         },
         {
