@@ -327,7 +327,7 @@ export class AppComponent implements OnInit {
               },
               {
                 label: 'Paste',
-                secondaryLabel: 'Paste selected (or all) notes<br>Pad will only light (white) if there are notes copied',
+                secondaryLabel: 'Paste copied notes<br>Pad will only light (white) if there are notes copied',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('12')]
               }
             ]
