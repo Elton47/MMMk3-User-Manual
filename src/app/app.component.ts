@@ -205,11 +205,11 @@ export class AppComponent implements OnInit {
             title: 'NAVIGATION',
             items: [
               {
-                label: 'Scroll up/down to show more drum pads, in increments of 1 row (4 pads)',
+                label: 'Scroll up/down to show more drum pads, in increments/decrements of 1 row (4 pads)',
                 actions: [allActions.jogWheelRotate]
               },
               {
-                label: 'Scroll up/down to show more drum pads, in increments of 4 rows (16 pads)',
+                label: 'Scroll up/down to show more drum pads, in increments/decrements of 4 rows (16 pads)',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               }
             ]
@@ -219,6 +219,41 @@ export class AppComponent implements OnInit {
       {
         type: ModeTypes.KEYBOARD,
         sections: [
+          {
+            title: 'NOTE TRIGGERING',
+            items: [
+              {
+                label: 'Activate KEYBOARD mode<br><small><em>Fully integrated with Live 11\'s new per-clip "Scales" and "Root Note" features<br>Scale and/or root note changes from the hardware will reflect to Live, and vice-versa<br>Supports note repeat</em></small>',
+                actions: [allActions.padMode, allActions.slashSeparator, allActions.keyboard]
+              },
+              {
+                label: 'Trigger notes<br><small><em>Pads color will match with selected clip\'s color or selected track\'s one, if no clip is selected (brighter light for root-note pads)<br>Root note and scale will match with selected clip\'s root note and scale, or "C3 Chromatic" initially. It will keep the same selected scale and root note for new clips, to match with Live 11\'s behavior</em></small>',
+                actions: [new Pad('1-16')]
+              }
+            ]
+          },
+          {
+            title: 'ROOT NOTE AND SCALE',
+            items: [
+              {
+                label: 'Change root note<br><small><em>"C" by default, will match with selected clip\'s root note</em></small>',
+                actions: [allActions.jogWheelPush, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change scale<br><small><em>"Chromatic" by default, will match with selected clip\'s scale</em></small>',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
+              }
+            ]
+          },
+          {
+            title: 'NAVIGATION',
+            items: [
+              {
+                label: 'Scroll up/down (change octave up/down) to show more notes in increments/decrements of 1 octave',
+                actions: [allActions.jogWheelRotate]
+              }
+            ]
+          }
         ]
       },
       {
