@@ -337,22 +337,22 @@ export class AppComponent implements OnInit {
             items: [
               {
                 label: 'Semitone-',
-                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
+                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('13')]
               },
               {
                 label: 'Semitone+',
-                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
+                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 semitone (will keep the note in-scale during transposition if scale is enabled in Live\'s Clip Detail view)',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('14')]
               },
               {
                 label: 'Octave-',
-                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 octave',
+                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 octave',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('15')]
               },
               {
                 label: 'Octave+',
-                secondaryLabel: 'Transpose down selected (or all) notes in decrements of 1 octave',
+                secondaryLabel: 'Transpose up selected (or all) notes in increments of 1 octave',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('16')]
               }
             ]
