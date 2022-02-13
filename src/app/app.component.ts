@@ -28,11 +28,13 @@ export class AppComponent implements OnInit {
             title: 'CLIP TRIGGERING',
             items: [
               {
-                label: 'Activate CLIP mode<br><small><em>Initially activated by default</em></small>',
+                label: 'Activate CLIP mode',
+                secondaryLabel: 'Initially activated by default',
                 actions: [allActions.pattern]
               },
               {
-                label: 'Launch clip, or create new clip and trigger session record<br><small><em>Pad color will match Live\'s clip color or will pulse red if new clip is created using pad 1-16, triggering session record</em></small>',
+                label: 'Launch clip, or create new clip and trigger session record',
+                secondaryLabel: 'Pad color will match Live\'s clip color or will pulse red if new clip is created using pad 1-16, triggering session record',
                 actions: [new Pad('1-16')]
               },
               {
@@ -100,7 +102,8 @@ export class AppComponent implements OnInit {
                 actions: [allActions.scene]
               },
               {
-                label: 'Launch scene<br><small><em>Pad color will match Live\'s scene color</em></small>',
+                label: 'Launch scene',
+                secondaryLabel: 'Pad color will match Live\'s scene color',
                 actions: [new Pad('1-16')]
               },
               {
@@ -175,11 +178,13 @@ export class AppComponent implements OnInit {
             title: 'DRUM PAD TRIGGERING',
             items: [
               {
-                label: 'Activate DRUM mode<br><small><em>Selected track must have Live\'s Drum Rack device loaded<br>Supports note repeat</em></small>',
+                label: 'Activate DRUM mode',
+                secondaryLabel: 'Selected track must have Live\'s Drum Rack device loaded<br>Supports note repeat',
                 actions: [allActions.padMode]
               },
               {
-                label: `Toggle auto-coloring of 1-16 hardware pads based on the name of drum pad/chain (i.e.: "Kick" is auto-colored in red)<br><small><em>Only while DRUM mode is activated</em></small>`,
+                label: 'Toggle auto-coloring of 1-16 hardware pads based on the name of drum pad/chain (i.e.: "Kick" is auto-colored in red)',
+                secondaryLabel: 'Only while DRUM mode is activated',
                 actions: [allActions.padMode]
               },
               {
@@ -223,11 +228,13 @@ export class AppComponent implements OnInit {
             title: 'NOTE TRIGGERING',
             items: [
               {
-                label: 'Activate KEYBOARD mode<br><small><em>Fully integrated with Live 11\'s new per-clip "Scales" and "Root Note" features<br>Scale and/or root note changes from the hardware will reflect to Live, and vice-versa<br>Supports note repeat</em></small>',
+                label: 'Activate KEYBOARD mode',
+                secondaryLabel: 'Fully integrated with Live 11\'s new per-clip "Scales" and "Root Note" features<br>Scale and/or root note changes from the hardware will reflect to Live, and vice-versa<br>Supports note repeat',
                 actions: [allActions.padMode, allActions.slashSeparator, allActions.keyboard]
               },
               {
-                label: 'Trigger notes<br><small><em>Pads color will match with selected clip\'s color or selected track\'s one, if no clip is selected (brighter light for root-note pads)<br>Root note and scale will match with selected clip\'s root note and scale, or "C3 Chromatic" initially. It will keep the same selected scale and root note for new clips, to match with Live 11\'s behavior</em></small>',
+                label: 'Trigger notes',
+                secondaryLabel: 'Pads color will match with selected clip\'s color or selected track\'s one, if no clip is selected (brighter light for root-note pads)<br>Root note and scale will match with selected clip\'s root note and scale, or "C3 Chromatic" initially. It will keep the same selected scale and root note for new clips, to match with Live 11\'s behavior',
                 actions: [new Pad('1-16')]
               }
             ]
@@ -236,11 +243,13 @@ export class AppComponent implements OnInit {
             title: 'ROOT NOTE AND SCALE',
             items: [
               {
-                label: 'Change root note<br><small><em>"C" by default, will match with selected clip\'s root note</em></small>',
+                label: 'Change root note',
+                secondaryLabel: '"C" by default, will match with selected clip\'s root note',
                 actions: [allActions.jogWheelPush, allActions.plusSeparator, allActions.jogWheelRotate]
               },
               {
-                label: 'Change scale<br><small><em>"Chromatic" by default, will match with selected clip\'s scale</em></small>',
+                label: 'Change scale',
+                secondaryLabel: '"Chromatic" by default, will match with selected clip\'s scale',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
               }
             ]
@@ -273,6 +282,7 @@ export class AppComponent implements OnInit {
       },
       {
         type: ModeTypes.OTHER,
+        title: 'OTHER',
         sections: [
         ]
       }
@@ -295,7 +305,8 @@ export class AppComponent implements OnInit {
           actions: [allActions.shift, allActions.plusSeparator, hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select]
         },
         {
-          label: 'Select track from up to 15 visible tracks, including Return tracks<br><small><em>Pad color will match Live\'s track color or white if muted or muted via solo</em></small>',
+          label: 'Select track from up to 15 visible tracks, including Return tracks',
+          secondaryLabel: 'Pad color will match Live\'s track color or white if muted or muted via solo',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, new Pad('1-15')]
         },
         {
@@ -329,7 +340,8 @@ export class AppComponent implements OnInit {
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase, allActions.plusSeparator, new Pad('1-15')]
         },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
-          label: 'Arm/Unarm track of corresponding pad (or multiple tracks)<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
+          label: 'Arm/Unarm track of corresponding pad (or multiple tracks)',
+          secondaryLabel: 'MASCHINE MIKRO MK3 only',
           actions: [allActions.select, allActions.plusSeparator, new Pad('1-15')]
         } : undefined,
         {
@@ -359,7 +371,8 @@ export class AppComponent implements OnInit {
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, allActions.erase]
         },
         hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
-          label: 'Arm/Unarm selected track<br><small><em>MASCHINE MIKRO MK3 only</em></small>',
+          label: 'Arm/Unarm selected track',
+          secondaryLabel: 'MASCHINE MIKRO MK3 only',
           actions: [allActions.select]
         } : undefined,
         {
@@ -371,7 +384,8 @@ export class AppComponent implements OnInit {
           actions: [allActions.mute]
         },
         {
-          label: 'Toggle Hot-Swap for selected device of track<br><small><em>It will open Live\'s Browser panel if it is closed</em></small>',
+          label: 'Toggle Hot-Swap for selected device of track',
+          secondaryLabel: 'It will open Live\'s Browser panel if it is closed',
           actions: [allActions.shift, allActions.plusSeparator, allActions.erase]
         },
         {

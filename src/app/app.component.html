@@ -1,6 +1,6 @@
 <header>
   <span class="selected-hardware-label">{{ selectedHardware ?? 'Select Hardware' }}</span>
-  <span *ngIf="selectedHardware" class="selected-mode-label">{{ selectedMode ? (selectedMode.title ?? (selectedMode.type ? (selectedMode.type + (selectedMode.type !== modeTypesEnum.OTHER ? ' Mode' : '')) : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select Mode' }}</span>
+  <span *ngIf="selectedHardware" class="selected-mode-label">{{ selectedMode ? (selectedMode.title ?? (selectedMode.type ? (selectedMode.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select Mode' }}</span>
   <div *ngIf="selectedHardware && !selectedMode" role="link" tabindex="0" class="back-to-hardware-selector-label" (click)="selectedHardware = undefined" (keydown.ENTER)="selectedHardware = undefined">Back to Hardware Selector</div>
   <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
@@ -9,9 +9,14 @@
     <div class="selected-mode-sections">
       <ng-container *ngFor="let section of selectedMode.sections">
         <div *ngIf="!section.hardwareType || section.hardwareType === selectedHardware" class="selected-mode-section">
-          <div class="selected-mode-section-header">{{ section.title }}</div>
+          <div class="selected-mode-section-header" [innerHTML]="section.title"></div>
           <div *ngFor="let sectionItem of section.items" class="selected-mode-section-item">
-            <div class="selected-mode-section-item-label" [innerHTML]="sectionItem.label"></div>
+            <div class="selected-mode-section-item-label-container">
+              <div class="selected-mode-section-item-label" [innerHTML]="sectionItem.label"></div>
+              <small *ngIf="sectionItem.secondaryLabel" class="selected-mode-section-item-secondary-label">
+                <em [innerHTML]="sectionItem.secondaryLabel"></em>
+              </small>
+            </div>
             <div *ngIf="sectionItem.actions?.length" class="selected-mode-section-item-actions">
               <ng-container *ngFor="let action of sectionItem.actions" class="selected-mode-section-item-action">
                 <ng-container [ngSwitch]="action.actionType">

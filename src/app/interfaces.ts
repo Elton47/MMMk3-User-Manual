@@ -7,13 +7,23 @@ export interface IMode {
 }
 
 export interface ISection {
+  /**
+   * Supports HTML
+   */
   title?: string;
   hardwareType?: HardwareTypes;
   items?: Array<ISectionItem>;
 }
 
 export interface ISectionItem {
+  /**
+   * Supports HTML
+   */
   label?: string;
+  /**
+   * Supports HTML
+   */
+  secondaryLabel?: string;
   actions?: Array<IAction>;
 }
 

@@ -78,13 +78,20 @@ main {
         align-items: center;
         justify-content: space-between;
         margin-top: var(--section-item-vertical-spacing);
-        &-label {
+        &-label-container {
           margin-right: 40px;
+        }
+        &-label, &-secondary-label {
           color: var(--section-item-label-font-color);
           font-family: var(--section-item-label-font-family);
-          font-size: var(--section-item-label-font-size);
           font-weight: var(--section-item-label-font-weight);
           letter-spacing: var(--section-item-label-letter-spacing);
+        }
+        &-label {
+          font-size: var(--section-item-label-font-size);
+        }
+        &-secondary-label {
+          display: block;
         }
         &-actions {
           display: flex;
