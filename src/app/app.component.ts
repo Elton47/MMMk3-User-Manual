@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
             title: 'CLIP TRIGGERING',
             items: [
               {
-                label: 'Activate CLIP mode, initially activated by default',
+                label: 'Activate CLIP mode<br><small><em>Initially activated by default</em></small>',
                 actions: [allActions.pattern]
               },
               {
@@ -286,6 +286,14 @@ export class AppComponent implements OnInit {
     let sectionItems: Array<ISectionItem | undefined> = [];
     switch (sectionType) {
       case 'track-selection': sectionItems = [
+        {
+          label: 'Activate TRACK mode (hold/unpinned)',
+          actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select]
+        },
+        {
+          label: 'Activate TRACK mode (pinned)',
+          actions: [allActions.shift, allActions.plusSeparator, hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select]
+        },
         {
           label: 'Select track from up to 15 visible tracks, including Return tracks<br><small><em>Pad color will match Live\'s track color or white if muted or muted via solo</em></small>',
           actions: [hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? allActions.group : allActions.select, allActions.plusSeparator, new Pad('1-15')]
