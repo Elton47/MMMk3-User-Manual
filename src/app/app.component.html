@@ -5,7 +5,7 @@
   <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
-  <div *ngIf="selectedHardware && selectedMode" class="selected-mode">
+  <div *ngIf="selectedHardware && selectedMode" class="selected-mode" [class.important-notes-mode]="selectedMode.type === modeTypesEnum.IMPORTANT_NOTES">
     <div class="selected-mode-sections">
       <ng-container *ngFor="let section of selectedMode.sections">
         <div *ngIf="!section.hardwareType || section.hardwareType === selectedHardware" class="selected-mode-section">
@@ -48,6 +48,7 @@
                   <div *ngSwitchCase="actionTypeEnum.PAD" class="selected-mode-section-item-action-pad">{{ action.label }}</div>
                   <div *ngSwitchCase="actionTypeEnum.SEPARATOR_PLUS" class="selected-mode-section-item-action-separator plus-separator">+</div>
                   <div *ngSwitchCase="actionTypeEnum.SEPARATOR_SLASH" class="selected-mode-section-item-action-separator slash-separator">/</div>
+                  <div *ngSwitchCase="actionTypeEnum.SEPARATOR_EQUALS" class="selected-mode-section-item-action-separator equals-separator">=</div>
                 </ng-container>
               </ng-container>
             </div>

@@ -4,6 +4,7 @@ export enum HardwareTypes {
 }
 
 export enum ModeTypes {
+  IMPORTANT_NOTES = 'IMPORTANT NOTES',
   CLIP = 'CLIP',
   SCENE = 'SCENE',
   TRACK = 'TRACK',
@@ -22,6 +23,7 @@ export enum ActionType {
   JOG_WHEEL_ROTATE,
   JOG_WHEEL_PUSH,
   PAD,
+  SEPARATOR_EQUALS,
   SEPARATOR_SLASH,
   SEPARATOR_PLUS,
   PLAY,

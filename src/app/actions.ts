@@ -172,6 +172,9 @@ export const allActions = {
   },
   slashSeparator: {
     actionType: ActionType.SEPARATOR_SLASH
+  },
+  equalsSeparator: {
+    actionType: ActionType.SEPARATOR_EQUALS
   }
 };
 

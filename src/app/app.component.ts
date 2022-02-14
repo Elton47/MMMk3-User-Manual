@@ -22,6 +22,27 @@ export class AppComponent implements OnInit {
     this.hardwares = Object.values(HardwareTypes);
     this.modes = [
       {
+        type: ModeTypes.IMPORTANT_NOTES,
+        title: 'IMPORTANT NOTES',
+        sections: [
+          {
+            title: 'Hardware MIDI Mode & SHIFT Button Notes',
+            items: [
+              {
+                label: 'Enable MIDI Mode',
+                secondaryLabel: 'Fundamental step, for the script to work, the hardware has to be on MIDI Mode',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.maschine]
+              },
+              {
+                label: 'Always use RESTART button for SHIFT operations',
+                secondaryLabel: 'When you see the SHIFT button in this manual being shown or mentioned, it means you have to use RESTART button on the hardware<br>It is a limitation from NI Controller Editor, where it is not possible to assign any CC values to the physical SHIFT button',
+                actions: [allActions.restart, allActions.equalsSeparator, allActions.shift]
+              }
+            ]
+          }
+        ]
+      },
+      {
         type: ModeTypes.CLIP,
         sections: [
           {

@@ -10,7 +10,7 @@ export interface ISection {
   /**
    * Supports HTML
    */
-  title?: string;
+  title: string;
   hardwareType?: HardwareTypes;
   items?: Array<ISectionItem>;
 }
