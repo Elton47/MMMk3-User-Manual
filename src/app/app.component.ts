@@ -359,6 +359,71 @@ export class AppComponent implements OnInit {
       {
         type: ModeTypes.METERING_AND_EVENTS,
         sections: [
+          {
+            title: 'METERING MODE',
+            items: [
+              {
+                label: 'Activate METERING mode',
+                secondaryLabel: 'Visual feedback on pads for playback volume levels of up to 4x tracks (4x columns visualization, scrollable for more tracks)',
+                actions: [allActions.volume]
+              }
+            ]
+          },
+          {
+            title: 'EVENTS MODE',
+            items: [
+              {
+                label: 'Activate EVENTS mode (hold)',
+                secondaryLabel: 'Mode to select/deselect notes of selected clip<br>Supports both "Drum Rack" and "Instrument" MIDI Tracks',
+                actions: [allActions.events]
+              },
+              {
+                label: 'Select notes of corresponding pad (Live v11.1+), or all notes (Live v11.0.x) of selected clip',
+                secondaryLabel: 'Pads color will match with selected clip\'s color (brighter light for pads that have at least one note that can be selected/deselected)',
+                actions: [allActions.events, allActions.plusSeparator, new Pad('1-16')]
+              },
+              {
+                label: 'Select/deselect all notes of selected clip',
+                secondaryLabel: 'Single-press button to select/deselect all notes',
+                actions: [allActions.events]
+              }
+            ]
+          },
+          {
+            title: 'NAVIGATION',
+            items: [
+              {
+                label: 'Scroll left/right to show more tracks when METERING mode is active',
+                secondaryLabel: 'METERING Mode only',
+                actions: [allActions.jogWheelRotate]
+              },
+              {
+                label: 'Scroll up/down (in octaves) to show more notes when EVENTS mode is active',
+                secondaryLabel: 'EVENTS Mode only, if selected track is an Instrument track (non-drum)',
+                actions: [allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change root note when EVENTS mode is active',
+                secondaryLabel: 'EVENTS Mode only, if selected track is an Instrument track (non-drum)',
+                actions: [allActions.jogWheelPush, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change scale when EVENTS mode is active',
+                secondaryLabel: 'EVENTS Mode only, if selected track is an Instrument track (non-drum)',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Scroll up/down, in increments/decrements of 1 row (4 pads) to show more drum pads when EVENTS mode is active',
+                secondaryLabel: 'EVENTS Mode only, if selected track is a Drum Rack track',
+                actions: [allActions.jogWheelRotate]
+              },
+              {
+                label: 'Scroll up/down, in increments/decrements of 4 rows (16 pads) to show more drum pads when EVENTS mode is active',
+                secondaryLabel: 'EVENTS Mode only, if selected track is a Drum Rack track',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
+              }
+            ]
+          }
         ]
       },
       {
@@ -373,9 +438,6 @@ export class AppComponent implements OnInit {
         ]
       }
     ];
-    // MOCK BELOW
-    // this.selectedHardware = HardwareTypes.MASCHINE_MIKRO_MK3;
-    // this.selectedMode = this.modes[3];
   }
 
   private getTrackModeSectionItemsBySectionTypeAndHardwareType(sectionType: 'track-selection' | 'track-actions' | 'selected-track', hardwareType: HardwareTypes): Array<ISectionItem> {
