@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
       {
         type: ModeTypes.IMPORTANT_NOTES,
         title: 'IMPORTANT NOTES',
+        hidden: true,
         sections: [
           {
             title: 'Hardware MIDI Mode & SHIFT Button Notes',

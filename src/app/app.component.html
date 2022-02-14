@@ -1,8 +1,8 @@
 <header>
   <span class="selected-hardware-label">{{ selectedHardware ?? 'Select Hardware' }}</span>
   <span *ngIf="selectedHardware" class="selected-mode-label">{{ selectedMode ? (selectedMode.title ?? (selectedMode.type ? (selectedMode.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select Mode' }}</span>
-  <div *ngIf="selectedHardware && !selectedMode" role="link" tabindex="0" class="back-to-hardware-selector-label" (click)="selectedHardware = undefined" (keydown.ENTER)="selectedHardware = undefined">Back to Hardware Selector</div>
-  <div *ngIf="selectedHardware && selectedMode" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
+  <div *ngIf="selectedHardware && (!selectedMode || selectedMode.hidden)" role="link" tabindex="0" class="back-to-hardware-selector-label" (click)="selectedHardware = undefined; selectedMode = undefined;" (keydown.ENTER)="selectedHardware = undefined; selectedMode = undefined;">Back to Hardware Selector</div>
+  <div *ngIf="selectedHardware && selectedMode && !selectedMode.hidden" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
 </header>
 <main>
   <div *ngIf="selectedHardware && selectedMode" class="selected-mode" [class.mode-with-less-than-3-sections]="(selectedMode.sections?.length ?? 0) < 3">
@@ -61,14 +61,17 @@
     <div class="hardware-selector-list">
       <div role="button" tabindex="0" *ngFor="let hardware of hardwares" class="hardware-selector-list-item" (click)="selectedHardware = hardware" (keydown.ENTER)="selectedHardware = hardware">
         {{ hardware }}
+        <div role="link" tabindex="0" class="important-notes-link" (click)="selectedHardware = hardware; selectedMode = modes[0];" (keydown.ENTER)="selectedHardware = hardware; selectedMode = modes[0]">Important Notes</div>
       </div>
     </div>
   </div>
   <div *ngIf="selectedHardware && !selectedMode" class="mode-selector">
     <div class="mode-selector-list">
-      <div role="button" tabindex="0" *ngFor="let mode of modes" class="mode-selector-list-item" (click)="selectedMode = mode" (keydown.ENTER)="selectedMode = mode">
-        {{ mode.type }}
-      </div>
+      <ng-container *ngFor="let mode of modes">
+        <div *ngIf="!mode.hidden" role="button" tabindex="0" class="mode-selector-list-item" (click)="selectedMode = mode" (keydown.ENTER)="selectedMode = mode">
+          {{ mode.type }}
+        </div>
+      </ng-container>
     </div>
   </div>
 </main>

@@ -3,6 +3,10 @@ import { ActionType, HardwareTypes, ModeTypes } from "src/app/enums";
 export interface IMode {
   type: ModeTypes;
   title?: string;
+  /**
+   * Hidden from mode selector
+   */
+  hidden?: boolean;
   sections?: Array<ISection>;
 }
 
