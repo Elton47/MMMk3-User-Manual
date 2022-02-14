@@ -428,7 +428,58 @@ export class AppComponent implements OnInit {
       },
       {
         type: ModeTypes.TRANSPORT_AND_NOTE_REPEAT,
+        title: 'TRANSPORT & NOTE REPEAT',
         sections: [
+          {
+            title: 'TRANSPORT CONTROL',
+            items: [
+              {
+                label: 'Start playback',
+                actions: [allActions.play]
+              },
+              {
+                label: 'Restart playback',
+                secondaryLabel: 'Start playback from beginning',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.play]
+              },
+              {
+                label: 'Start Session recording',
+                actions: [allActions.rec]
+              },
+              {
+                label: 'Start Arrangement recording',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.rec]
+              },
+              {
+                label: 'Stop playback',
+                actions: [allActions.stop]
+              }
+            ]
+          },
+          {
+            title: 'NOTE REPEAT',
+            items: [
+              {
+                label: 'Activate Note Repeat (hold)',
+                secondaryLabel: 'Temporarily activates DRUM or KEYBOARD mode (depending on selected track type), will return to previous mode when Note Repeat is deactivated',
+                actions: [allActions.noteRepeat, allActions.slashSeparator, allActions.touchStrip]
+              },
+              {
+                label: 'Activate Note Repeat (pinned)',
+                secondaryLabel: 'Also activates DRUM or KEYBOARD mode (depending on selected track type), will return to previous mode when Note Repeat is deactivated',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.noteRepeat]
+              },
+              {
+                label: 'Deactivate pinned Note Repeat',
+                actions: [allActions.noteRepeat, allActions.slashSeparator, allActions.touchStrip]
+              },
+              {
+                label: 'Change Note Repeat rate (1/2 up to 1/64)',
+                secondaryLabel: '"1/16" repeat rate by default<br>Temporarily activates Note Repeat if it is deactivated, which will also temporarily activates DRUM or KEYBOARD mode',
+                actions: [allActions.touchStrip]
+              }
+            ]
+          }
         ]
       },
       {
