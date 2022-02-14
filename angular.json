@@ -50,6 +50,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
+              "src/apple-favicon.ico",
               "src/assets"
             ],
             "styles": [
