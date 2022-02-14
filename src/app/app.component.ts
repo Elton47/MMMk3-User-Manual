@@ -486,6 +486,66 @@ export class AppComponent implements OnInit {
         type: ModeTypes.OTHER,
         title: 'OTHER',
         sections: [
+          {
+            title: 'LIVE SET ACTIONS',
+            items: [
+              {
+                label: 'Change Tempo in increments/decrements of 1.00',
+                actions: [allActions.tempo, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change Tempo in increments/decrements of 0.10',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.tempo, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change Quantization Swing amount in increments/decrements of 1.0',
+                actions: [allActions.swing, allActions.plusSeparator, allActions.jogWheelRotate]
+              },
+              {
+                label: 'Change Quantization Swing amount in increments/decrements of 10.0',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.swing, allActions.plusSeparator, allActions.jogWheelRotate]
+              }
+            ]
+          },
+          {
+            title: 'MISCELLANEOUS',
+            items: [
+              {
+                label: 'Tap Tempo',
+                actions: [allActions.tap]
+              },
+              {
+                label: 'Toggle Metronome',
+                actions: [allActions.shift, allActions.plusSeparator, allActions.tap]
+              },
+              {
+                label: 'Toggle Automation arming',
+                actions: [allActions.auto]
+              },
+              {
+                label: 'Capture MIDI',
+                secondaryLabel: 'Hardware button will light brighter when there are notes that can be captured',
+                actions: [allActions.notes]
+              }
+            ]
+          },
+          {
+            title: 'NAVIGATION',
+            items: [
+              {
+                label: 'Toggle between Session and Arrangement View',
+                actions: [allActions.perform]
+              },
+              {
+                label: 'Toggle between Device and Clip Detail View',
+                actions: [allActions.plugin]
+              },
+              {
+                label: 'Open/Close Live\'s Browser panel',
+                actions: [allActions.browser]
+              }
+            ]
+          }
         ]
       }
     ];
@@ -588,7 +648,7 @@ export class AppComponent implements OnInit {
           actions: [allActions.shift, allActions.plusSeparator, allActions.erase]
         },
         {
-          label: 'Change volume of selected track in increments/decrements of 1dB',
+          label: 'Change volume of selected track in increments/decrements of 1.0dB',
           actions: [allActions.volume, allActions.plusSeparator, allActions.jogWheelRotate]
         }
       ]; break;
