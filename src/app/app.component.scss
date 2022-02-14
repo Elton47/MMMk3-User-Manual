@@ -300,9 +300,6 @@ main {
   .hardware-selector, .mode-selector {
     max-width: 768px;
     margin: 52px auto;
-    padding: 24px 32px;
-    border: var(--mode-title-border-width) solid var(--mode-title-border-color);
-    border-radius: var(--mode-title-border-radius);
     font-family: 'Franklin Gothic Book';
     &-title {
       text-align: center;
