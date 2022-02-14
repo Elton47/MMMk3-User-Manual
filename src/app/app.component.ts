@@ -142,32 +142,32 @@ export class AppComponent implements OnInit {
           {
             title: 'TRACK SELECTION',
             hardwareType: HardwareTypes.MASCHINE_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_MK3)
           },
           {
             title: 'TRACK SELECTION',
             hardwareType: HardwareTypes.MASCHINE_MIKRO_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_MIKRO_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_MIKRO_MK3)
           },
           {
             title: 'TRACK ACTIONS',
             hardwareType: HardwareTypes.MASCHINE_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MK3)
           },
           {
             title: 'TRACK ACTIONS',
             hardwareType: HardwareTypes.MASCHINE_MIKRO_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MIKRO_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MIKRO_MK3)
           },
           {
             title: 'SELECTED TRACK',
             hardwareType: HardwareTypes.MASCHINE_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_MK3)
           },
           {
             title: 'SELECTED TRACK',
             hardwareType: HardwareTypes.MASCHINE_MIKRO_MK3,
-            items: this.getTrackSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_MIKRO_MK3)
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_MIKRO_MK3)
           }
         ]
       },
@@ -208,16 +208,13 @@ export class AppComponent implements OnInit {
           },
           {
             title: 'NAVIGATION',
-            items: [
-              {
-                label: 'Scroll up/down to show more drum pads, in increments/decrements of 1 row (4 pads)',
-                actions: [allActions.jogWheelRotate]
-              },
-              {
-                label: 'Scroll up/down to show more drum pads, in increments/decrements of 4 rows (16 pads)',
-                actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
-              }
-            ]
+            hardwareType: HardwareTypes.MASCHINE_MK3,
+            items: this.getDrumModeNavigationItemsByHardwareType(HardwareTypes.MASCHINE_MK3)
+          },
+          {
+            title: 'NAVIGATION',
+            hardwareType: HardwareTypes.MASCHINE_MIKRO_MK3,
+            items: this.getDrumModeNavigationItemsByHardwareType(HardwareTypes.MASCHINE_MIKRO_MK3)
           }
         ]
       },
@@ -381,7 +378,7 @@ export class AppComponent implements OnInit {
     // this.selectedMode = this.modes[3];
   }
 
-  private getTrackSectionItemsBySectionTypeAndHardwareType(sectionType: 'track-selection' | 'track-actions' | 'selected-track', hardwareType: HardwareTypes): Array<ISectionItem> {
+  private getTrackModeSectionItemsBySectionTypeAndHardwareType(sectionType: 'track-selection' | 'track-actions' | 'selected-track', hardwareType: HardwareTypes): Array<ISectionItem> {
     let sectionItems: Array<ISectionItem | undefined> = [];
     switch (sectionType) {
       case 'track-selection': sectionItems = [
@@ -483,6 +480,25 @@ export class AppComponent implements OnInit {
         }
       ]; break;
     }
+    return sectionItems.filter((sectionItem: ISectionItem | undefined) => sectionItem !== undefined) as Array<ISectionItem>;
+  }
+
+  private getDrumModeNavigationItemsByHardwareType(hardwareType: HardwareTypes): Array<ISectionItem> {
+    const sectionItems: Array<ISectionItem | undefined> = [
+      {
+        label: 'Scroll up/down to show more drum pads, in increments/decrements of 1 row (4 pads)',
+        actions: [allActions.jogWheelRotate]
+      },
+      {
+        label: 'Scroll up/down to show more drum pads, in increments/decrements of 4 rows (16 pads)',
+        actions: [allActions.shift, allActions.plusSeparator, allActions.jogWheelRotate]
+      },
+      hardwareType === HardwareTypes.MASCHINE_MIKRO_MK3 ? {
+        label: 'Select drum pad without triggering sound',
+        secondaryLabel: 'MASCHINE MIKRO MK3 only',
+        actions: [allActions.select, allActions.plusSeparator, new Pad('1-16')]
+      } : undefined
+    ];
     return sectionItems.filter((sectionItem: ISectionItem | undefined) => sectionItem !== undefined) as Array<ISectionItem>;
   }
 }
