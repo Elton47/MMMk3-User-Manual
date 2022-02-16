@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { allActions, Pad } from 'src/app/actions';
 import { ActionType, HardwareTypes, ModeTypes } from 'src/app/enums';
 import { IMode, ISectionItem } from 'src/app/interfaces';
@@ -9,6 +9,7 @@ import { IMode, ISectionItem } from 'src/app/interfaces';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  darkThemeEnabled!: boolean;
   hardwares!: Array<HardwareTypes>;
   selectedHardware?: HardwareTypes;
   modes!: Array<IMode>;
@@ -18,7 +19,12 @@ export class AppComponent implements OnInit {
 
   constructor() { }
 
+  @HostBinding('class.dark-theme') get isDarkTheme(): boolean {
+    return this.darkThemeEnabled;
+  }
+
   ngOnInit(): void {
+    this.darkThemeEnabled = JSON.parse(localStorage.getItem('darkThemeEnabled') ?? 'false');
     this.hardwares = Object.values(HardwareTypes);
     this.modes = [
       {
@@ -695,5 +701,10 @@ export class AppComponent implements OnInit {
       } : undefined
     ];
     return sectionItems.filter((sectionItem: ISectionItem | undefined) => sectionItem !== undefined) as Array<ISectionItem>;
+  }
+
+  public toggleDarkTheme(): void {
+    this.darkThemeEnabled = !this.darkThemeEnabled;
+    localStorage.setItem('darkThemeEnabled', JSON.stringify(this.darkThemeEnabled));
   }
 }

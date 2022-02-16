@@ -3,6 +3,7 @@
   <span *ngIf="selectedHardware" class="selected-mode-label">{{ selectedMode ? (selectedMode.title ?? (selectedMode.type ? (selectedMode.type + ' Mode') : null) ?? 'MASCHINE MK3 / MIKRO MK3 Ableton Live 11 Script') : 'Select Mode' }}</span>
   <div *ngIf="selectedHardware && (!selectedMode || selectedMode.hidden)" role="link" tabindex="0" class="back-to-hardware-selector-label" (click)="selectedHardware = undefined; selectedMode = undefined;" (keydown.ENTER)="selectedHardware = undefined; selectedMode = undefined;">Back to Hardware Selector</div>
   <div *ngIf="selectedHardware && selectedMode && !selectedMode.hidden" role="link" tabindex="0" class="back-to-mode-selector-label" (click)="selectedMode = undefined" (keydown.ENTER)="selectedMode = undefined">Back to Mode Selector</div>
+  <div role="link" tabindex="0" class="theme-toggler" (click)="toggleDarkTheme()" (keydown.ENTER)="toggleDarkTheme()">{{ darkThemeEnabled ? 'Light' : 'Dark' }} Theme</div>
 </header>
 <main>
   <div *ngIf="selectedHardware && selectedMode" class="selected-mode" [class.mode-with-less-than-3-sections]="(selectedMode.sections?.length ?? 0) < 3">

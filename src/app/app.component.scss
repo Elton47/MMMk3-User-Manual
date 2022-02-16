@@ -4,6 +4,13 @@
   flex-direction: column;
   padding: var(--main-page-padding);
   background-color: inherit;
+  &.dark-theme {
+    filter: invert(1);
+    .play-button, .rec-button {
+      filter: invert(1);
+      background-color: var(--toggle-button-inverted-background-color);
+    }
+  }
 }
 header {
   position: sticky;
@@ -35,6 +42,21 @@ header {
     cursor: pointer;
     &:focus, &:focus-within, &:hover {
       text-decoration: underline;
+    }
+  }
+  .theme-toggler {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 14px;
+    cursor: pointer;
+    &:focus, &:focus-within, &:hover {
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 900px) {
+      top: -4px;
+      right: -2px;
+      transform: translateY(-100%);
     }
   }
 }
