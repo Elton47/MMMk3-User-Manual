@@ -101,7 +101,7 @@ main {
     overflow-x: hidden;
     &.mode-with-less-than-3-sections .selected-mode-section {
       margin: 0 auto;
-      @media screen and (min-width: 1920px) {
+      @media print, screen and (min-width: 1920px) {
         width: var(--section-width-md);
       }
     }
@@ -116,7 +116,7 @@ main {
       @media screen and (min-width: 1280px) {
         width: var(--section-width-md);
       }
-      @media screen and (min-width: 1920px) {
+      @media print, screen and (min-width: 1920px) {
         width: var(--section-width-lg);
       }
       &-header {
@@ -463,5 +463,30 @@ main {
     &.dark {
       fill: var(--toggle-button-background-color) !important;
     }
+  }
+}
+
+@media print {
+  // Chrome Print to Save as PDF configurations:
+  //
+  // Destination: Save as PDF
+  // Pages: All,
+  // Layout: Landscape
+  // More Settings (expand)
+  // Paper size: Letter
+  // Pages per sheet: 1
+  // Margins: None
+  // Scale: Custom -> 60
+  // Options: Background graphics -> Enabled
+  //
+  // Important: Make sure to create updated PDF manual for each hardware, for each new update of manual, also for both Light and Dark themes
+  header {
+    justify-content: space-between;
+    .back-to-hardware-selector-label, .back-to-mode-selector-label, .theme-toggler {
+      display: none;
+    }
+  }
+  *, *::before, *::after{
+    animation: none !important;
   }
 }
