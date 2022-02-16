@@ -24,7 +24,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.darkThemeEnabled = JSON.parse(localStorage.getItem('darkThemeEnabled') ?? 'false');
+    this.darkThemeEnabled = JSON.parse(localStorage.getItem('darkThemeEnabled') || 'false') || false;
+    this.selectedHardware = JSON.parse(localStorage.getItem('selectedHardware') || 'false') || undefined;
     this.hardwares = Object.values(HardwareTypes);
     this.modes = [
       {
@@ -701,6 +702,21 @@ export class AppComponent implements OnInit {
       } : undefined
     ];
     return sectionItems.filter((sectionItem: ISectionItem | undefined) => sectionItem !== undefined) as Array<ISectionItem>;
+  }
+
+  public selectHardware(hardware: HardwareTypes): void {
+    this.selectedHardware = hardware;
+    localStorage.setItem('selectedHardware', JSON.stringify(hardware));
+  }
+
+  public backToHardwareSelector(): void {
+    this.backToModeSelector();
+    this.selectedHardware = undefined;
+    localStorage.removeItem('selectedHardware');
+  }
+
+  public backToModeSelector(): void {
+    this.selectedMode = undefined;
   }
 
   public toggleDarkTheme(): void {
