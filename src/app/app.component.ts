@@ -296,17 +296,17 @@ export class AppComponent implements OnInit {
               },
               {
                 label: 'Undo',
-                secondaryLabel: 'Pad will only light (white) if Undo can be performed',
+                secondaryLabel: 'Pad (white) will light brighter if Undo can be performed',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('1')]
               },
               {
                 label: 'Redo',
-                secondaryLabel: 'Pad will only light (white) if Redo can be performed',
+                secondaryLabel: 'Pad (white) will light brighter if Redo can be performed',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('2')]
               },
               {
                 label: 'Clear Auto',
-                secondaryLabel: 'Clear all envelopes of selected clip<br>Pad will only light if there is at least one clip envelope that can be cleared',
+                secondaryLabel: 'Clear all envelopes of selected clip<br>Pad will light red if there is at least one clip envelope that can be cleared',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('10')]
               }
             ]
@@ -346,7 +346,7 @@ export class AppComponent implements OnInit {
               },
               {
                 label: 'Paste',
-                secondaryLabel: 'Paste copied notes<br>Pad will only light (white) if there are notes copied',
+                secondaryLabel: 'Paste copied notes<br>Pad (white) will only light with color of clip if there are notes copied',
                 actions: [allActions.shift, allActions.plusSeparator, new Pad('12')]
               }
             ]
