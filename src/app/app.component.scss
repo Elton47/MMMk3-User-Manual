@@ -23,7 +23,7 @@ header {
   color: var(--mode-title-font-color);
   z-index: 1;
   @media screen and (max-width: 900px) {
-    font-size: calc(2vw + 3vh / 2);
+    font-size: calc(2vw + 2vh / 2);
   }
   .selected-hardware-label, .selected-mode-label, .back-to-hardware-selector-label, .back-to-mode-selector-label {
     padding: 0 8px;
