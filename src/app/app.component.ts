@@ -170,6 +170,11 @@ export class AppComponent implements OnInit {
         sections: [
           {
             title: 'TRACK SELECTION',
+            hardwareType: HardwareTypes.MASCHINE_PLUS,
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_PLUS)
+          },
+          {
+            title: 'TRACK SELECTION',
             hardwareType: HardwareTypes.MASCHINE_MK3,
             items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-selection', HardwareTypes.MASCHINE_MK3)
           },
@@ -180,6 +185,11 @@ export class AppComponent implements OnInit {
           },
           {
             title: 'TRACK ACTIONS',
+            hardwareType: HardwareTypes.MASCHINE_PLUS,
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_PLUS)
+          },
+          {
+            title: 'TRACK ACTIONS',
             hardwareType: HardwareTypes.MASCHINE_MK3,
             items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MK3)
           },
@@ -187,6 +197,11 @@ export class AppComponent implements OnInit {
             title: 'TRACK ACTIONS',
             hardwareType: HardwareTypes.MASCHINE_MIKRO_MK3,
             items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('track-actions', HardwareTypes.MASCHINE_MIKRO_MK3)
+          },
+          {
+            title: 'SELECTED TRACK',
+            hardwareType: HardwareTypes.MASCHINE_PLUS,
+            items: this.getTrackModeSectionItemsBySectionTypeAndHardwareType('selected-track', HardwareTypes.MASCHINE_PLUS)
           },
           {
             title: 'SELECTED TRACK',
@@ -234,6 +249,11 @@ export class AppComponent implements OnInit {
                 actions: [allActions.mute, allActions.plusSeparator, new Pad('1-16')]
               }
             ]
+          },
+          {
+            title: 'NAVIGATION',
+            hardwareType: HardwareTypes.MASCHINE_PLUS,
+            items: this.getDrumModeNavigationItemsByHardwareType(HardwareTypes.MASCHINE_PLUS)
           },
           {
             title: 'NAVIGATION',
@@ -472,11 +492,11 @@ export class AppComponent implements OnInit {
                 actions: [allActions.shift, allActions.plusSeparator, allActions.play]
               },
               {
-                label: 'Start Session recording',
+                label: 'Start/Stop Session recording',
                 actions: [allActions.rec]
               },
               {
-                label: 'Start Arrangement recording',
+                label: 'Start/Stop Arrangement recording',
                 actions: [allActions.shift, allActions.plusSeparator, allActions.rec]
               },
               {
@@ -555,6 +575,10 @@ export class AppComponent implements OnInit {
                 label: 'Capture MIDI',
                 secondaryLabel: 'Hardware button will light brighter when there are notes that can be captured',
                 actions: [allActions.notes]
+              },
+              {
+                label: `Change selected or all notes' velocity to 100`,
+                actions: [allActions.shift, allActions.plusSeparator, allActions.fixedVelocity]
               }
             ]
           },

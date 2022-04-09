@@ -1,1 +1,1 @@
-# Interactive User Manual for MASCHINE MK3/MIKRO MK3 Ableton Live 11 Control Surface Script
+# Interactive User Manual for MASCHINE PLUS/MK3/MIKRO MK3 Ableton Live 11 Control Surface Script
